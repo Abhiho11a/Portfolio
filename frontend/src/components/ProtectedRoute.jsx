@@ -11,7 +11,8 @@ export default function ProtectedRoute({ children }) {
       return;
     }
 
-    fetch('http://localhost:5000/api/auth/verify', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    fetch(`${API_URL}/auth/verify`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => {

@@ -11,7 +11,8 @@ export function DataProvider({ children }) {
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch('http://localhost:5000/api/data');
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const res = await fetch(`${API_URL}/data`);
       if (!res.ok) throw new Error('Failed to fetch data');
       const json = await res.json();
       setData(json);

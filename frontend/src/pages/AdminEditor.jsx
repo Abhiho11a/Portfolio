@@ -556,7 +556,8 @@ export default function AdminEditor() {
     setSaving(true);
     try {
       const token = localStorage.getItem('admin-token');
-      const res = await fetch(`http://localhost:5000/api/data/${section}`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const res = await fetch(`${API_URL}/data/${section}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -581,7 +582,8 @@ export default function AdminEditor() {
     setResetting(true);
     try {
       const token = localStorage.getItem('admin-token');
-      const res = await fetch(`http://localhost:5000/api/data/reset/${section}`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const res = await fetch(`${API_URL}/data/reset/${section}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
