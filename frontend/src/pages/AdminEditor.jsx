@@ -254,17 +254,32 @@ function FieldRenderer({ field, value, onChange }) {
 
     case 'skillsArray':
       return (
-        <div className="space-y-3 pl-2 border-l-2" style={{ borderColor: 'rgba(var(--accent-rgb), 0.2)' }}>
+        <div className="space-y-4 pl-2 border-l-2" style={{ borderColor: 'rgba(var(--accent-rgb), 0.2)' }}>
           {(value || []).map((skill, i) => (
-            <div key={i} className="flex items-center gap-2 bg-zinc-900/30 p-3 rounded-lg">
-              <input type="text" value={skill.name || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], name: e.target.value }; onChange(arr); }} className={`${inputClass} flex-1`} placeholder="Skill name" />
-              <input type="number" min="0" max="100" value={skill.level || 0} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], level: parseInt(e.target.value) }; onChange(arr); }} className={`${inputClass} w-20`} />
-              <input type="text" value={skill.desc || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], desc: e.target.value }; onChange(arr); }} className={`${inputClass} flex-1`} placeholder="Description" />
-              <button onClick={() => onChange((value || []).filter((_, idx) => idx !== i))} className="p-2 rounded-lg text-red-400 hover:bg-red-500/10 transition-colors"><Trash2 size={14} /></button>
+            <div key={i} className="flex flex-col gap-3 bg-zinc-900/40 p-4 rounded-xl border border-zinc-800/50">
+              <div className="flex items-center gap-3">
+                <div className="flex-1">
+                  <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Skill Name</label>
+                  <input type="text" value={skill.name || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], name: e.target.value }; onChange(arr); }} className={inputClass} placeholder="e.g. React" />
+                </div>
+                <div className="w-24">
+                  <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Level (%)</label>
+                  <input type="number" min="0" max="100" value={skill.level || 0} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], level: parseInt(e.target.value) }; onChange(arr); }} className={inputClass} />
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex-1">
+                  <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Description (Optional)</label>
+                  <input type="text" value={skill.desc || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], desc: e.target.value }; onChange(arr); }} className={inputClass} placeholder="e.g. Hooks, Context" />
+                </div>
+                <button onClick={() => onChange((value || []).filter((_, idx) => idx !== i))} className="mt-5 p-3 rounded-lg text-red-400 bg-red-500/5 border border-red-500/10 hover:bg-red-500/20 transition-colors">
+                  <Trash2 size={16} />
+                </button>
+              </div>
             </div>
           ))}
-          <button onClick={() => onChange([...(value || []), { name: '', level: 50, desc: '' }])} className="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-all" style={{ color: 'var(--accent)', background: 'rgba(var(--accent-rgb), 0.08)' }}>
-            <Plus size={12} /> Add Skill
+          <button onClick={() => onChange([...(value || []), { name: '', level: 50, desc: '' }])} className="flex items-center gap-2 text-xs font-medium px-4 py-3 rounded-xl transition-all" style={{ color: 'var(--accent)', background: 'rgba(var(--accent-rgb), 0.1)' }}>
+            <Plus size={14} /> Add Skill
           </button>
         </div>
       );

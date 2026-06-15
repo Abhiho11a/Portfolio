@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, ArrowUpRight, Eye, BookOpen, Cpu, GitFork, Code2 } from 'lucide-react';
 import TiltCard from './TiltCard';
 import { usePortfolioData } from '../DataContext';
+import ProjectModal from './ProjectModal';
 
 const iconMap = {
   'SimplifiED': BookOpen,
@@ -9,10 +11,10 @@ const iconMap = {
   'Codebase Q&A Engine': GitFork,
 };
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onClick }) {
   const Icon = iconMap[project.title] || Code2;
   return (
-    <TiltCard className="h-full">
+    <TiltCard className="h-full cursor-pointer" onClick={() => onClick(project)}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -59,8 +61,12 @@ function ProjectCard({ project, index }) {
                 </div>
               ))}
             </div>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all group/btn" style={{ background: `${project.colorHex}10`, border: `1px solid ${project.colorHex}25`, color: project.colorHex }}>
-              <Eye size={14} /> View Architecture
+            <button 
+              onClick={(e) => { e.stopPropagation(); onClick(project); }}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all group/btn" 
+              style={{ background: `${project.colorHex}10`, border: `1px solid ${project.colorHex}25`, color: project.colorHex }}
+            >
+              <Eye size={14} /> View Details
             </button>
           </div>
         </div>
@@ -72,6 +78,7 @@ function ProjectCard({ project, index }) {
 export default function ProjectLab() {
   const { data, loading } = usePortfolioData();
   const projects = data?.projects || [];
+  const [selectedProject, setSelectedProject] = useState(null);
 
   if (loading || projects.length === 0) return null;
 
@@ -86,10 +93,14 @@ export default function ProjectLab() {
         </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {projects.map((project, i) => (
-            <ProjectCard key={project._id || project.title} project={project} index={i} />
+            <ProjectCard key={project._id || project.title} project={project} index={i} onClick={setSelectedProject} />
           ))}
         </div>
       </div>
+      
+      {selectedProject && (
+        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      )}
     </section>
   );
 }

@@ -116,7 +116,7 @@ export default function AdminDashboard() {
           <div className="flex items-center gap-3">
             <a
               href="/"
-              target="_blank"
+              // target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900/60 border border-zinc-800/50 text-zinc-400 hover:text-zinc-100 hover:border-zinc-700 transition-all"
             >

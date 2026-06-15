@@ -39,6 +39,10 @@ const portfolioDataSchema = new mongoose.Schema({
       live: String,
       github: String,
     },
+    images: [{
+      url: String,
+      caption: String,
+    }],
   }],
 
   currentlyBuilding: [{

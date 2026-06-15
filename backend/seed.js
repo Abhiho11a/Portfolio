@@ -86,6 +86,10 @@ export function getDefaultData() {
         accent: 'emerald',
         stats: { users: '2.5K+', modules: '12' },
         links: { live: '', github: '' },
+        images: [
+          { url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop', caption: 'Dashboard Overview' },
+          { url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop', caption: 'Data Analytics' }
+        ],
       },
       {
         title: 'EngiTrack',
@@ -96,6 +100,10 @@ export function getDefaultData() {
         accent: 'cyan',
         stats: { modules: '14', active: '1.2K+' },
         links: { live: '', github: '' },
+        images: [
+          { url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop', caption: 'Productivity Suite UI' },
+          { url: 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?q=80&w=1200&auto=format&fit=crop', caption: 'Task Management Module' }
+        ],
       },
       {
         title: 'Codebase Q&A Engine',
@@ -106,6 +114,10 @@ export function getDefaultData() {
         accent: 'violet',
         stats: { repos: '500+', queries: '10K+' },
         links: { live: '', github: '' },
+        images: [
+          { url: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop', caption: 'Code Analysis Interface' },
+          { url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop', caption: 'RAG Pipeline Visualization' }
+        ],
       },
     ],
 
