@@ -14,7 +14,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173','https://portfolio-abhishekholla.vercel.app/'],
+  origin: ['http://localhost:5173', 'http://127.0.0.1:5173','https://portfolio-abhishekholla.vercel.app'],
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
