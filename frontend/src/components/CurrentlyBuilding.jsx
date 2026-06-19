@@ -17,7 +17,7 @@ export default function CurrentlyBuilding() {
             &lt;building_now /&gt;
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Currently <span className="text-gradient">Building</span></h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2">What I'm actively working on right now. Always shipping.</p>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2">What I'm actively working on right now. Always shipping.</p>
         </motion.div>
 
         <div className="space-y-4">
@@ -46,7 +46,7 @@ export default function CurrentlyBuilding() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-zinc-200/40 dark:border-zinc-800/40">
-                {project.techStack?.map((tech) => (<span key={tech} className="px-2 py-0.5 text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 bg-zinc-50/40 dark:bg-zinc-900/40 rounded border border-zinc-200/40 dark:border-zinc-800/40">{tech}</span>))}
+                {project.techStack?.map((tech) => (<span key={tech} className="px-2 py-0.5 text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 bg-zinc-50/40 dark:bg-zinc-900/40 rounded border border-zinc-200/40 dark:border-zinc-800/40">{tech}</span>))}
               </div>
             </motion.div>
           ))}

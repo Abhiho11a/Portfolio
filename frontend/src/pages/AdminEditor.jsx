@@ -258,17 +258,17 @@ function FieldRenderer({ field, value, onChange }) {
             <div key={i} className="flex flex-col gap-3 bg-zinc-50/40 dark:bg-zinc-900/40 p-4 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50">
               <div className="flex items-center gap-3">
                 <div className="flex-1">
-                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Skill Name</label>
+                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Skill Name</label>
                   <input type="text" value={skill.name || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], name: e.target.value }; onChange(arr); }} className={inputClass} placeholder="e.g. React" />
                 </div>
                 <div className="w-24">
-                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Level (%)</label>
+                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Level (%)</label>
                   <input type="number" min="0" max="100" value={skill.level || 0} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], level: parseInt(e.target.value) }; onChange(arr); }} className={inputClass} />
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex-1">
-                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Description (Optional)</label>
+                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Description (Optional)</label>
                   <input type="text" value={skill.desc || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], desc: e.target.value }; onChange(arr); }} className={inputClass} placeholder="e.g. Hooks, Context" />
                 </div>
                 <button onClick={() => onChange((value || []).filter((_, idx) => idx !== i))} className="mt-5 p-3 rounded-lg text-red-400 bg-red-500/5 border border-red-500/10 hover:bg-red-500/20 transition-colors">
@@ -309,7 +309,7 @@ function ItemCard({ item, index, fields, titleKey, onUpdate, onDelete }) {
         className="w-full flex items-center justify-between p-4 hover:bg-zinc-50/30 dark:hover:bg-zinc-900/30 transition-colors"
       >
         <div className="flex items-center gap-3">
-          <span className="w-7 h-7 rounded-lg bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-xs font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
+          <span className="w-7 h-7 rounded-lg bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-xs font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
             {index + 1}
           </span>
           <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 text-left">{title}</span>
@@ -321,7 +321,7 @@ function ItemCard({ item, index, fields, titleKey, onUpdate, onDelete }) {
           >
             <Trash2 size={14} />
           </button>
-          {expanded ? <ChevronUp size={16} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" /> : <ChevronDown size={16} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" />}
+          {expanded ? <ChevronUp size={16} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" /> : <ChevronDown size={16} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" />}
         </div>
       </button>
 
@@ -440,11 +440,11 @@ function FooterEditor({ data, onChange }) {
         {socials.map((s, i) => (
           <div key={i} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 glass rounded-xl border border-zinc-200/60 dark:border-zinc-800/60">
             <div className="w-full sm:w-1/3">
-              <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Platform Name</label>
+              <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 uppercase mb-1">Platform Name</label>
               <input type="text" value={s.label || ''} onChange={(e) => { const arr = [...socials]; arr[i] = { ...arr[i], label: e.target.value }; onChange({ ...data, socials: arr }); }} className={`${inputClass} !py-2`} placeholder="e.g. Github" />
             </div>
             <div className="w-full sm:flex-1">
-              <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Profile URL</label>
+              <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 uppercase mb-1">Profile URL</label>
               <input type="url" value={s.href || ''} onChange={(e) => { const arr = [...socials]; arr[i] = { ...arr[i], href: e.target.value }; onChange({ ...data, socials: arr }); }} className={`${inputClass} !py-2`} placeholder="https://..." />
             </div>
             <button onClick={() => onChange({ ...data, socials: socials.filter((_, idx) => idx !== i) })} className="mt-5 sm:mt-0 p-2.5 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors">
@@ -501,7 +501,7 @@ function AchievementsEditor({ data, onChange }) {
               onDelete={(idx) => onChange({ ...data, hackathons: hackathons.filter((_, j) => j !== idx) })}
             />
           ))}
-          <button onClick={() => onChange({ ...data, hackathons: [...hackathons, { ...config.defaultHackathon }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
+          <button onClick={() => onChange({ ...data, hackathons: [...hackathons, { ...config.defaultHackathon }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
             <Plus size={16} /> Add Hackathon Win
           </button>
         </div>
@@ -525,7 +525,7 @@ function AchievementsEditor({ data, onChange }) {
               onDelete={(idx) => onChange({ ...data, events: events.filter((_, j) => j !== idx) })}
             />
           ))}
-          <button onClick={() => onChange({ ...data, events: [...events, { ...config.defaultEvent }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
+          <button onClick={() => onChange({ ...data, events: [...events, { ...config.defaultEvent }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
             <Plus size={16} /> Add Event
           </button>
         </div>
@@ -618,7 +618,7 @@ export default function AdminEditor() {
         <div className="text-center">
           <AlertCircle size={48} className="text-red-400 mx-auto mb-4" />
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">Section not found</h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-4">The section "{section}" doesn't exist.</p>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-4">The section "{section}" doesn't exist.</p>
           <button onClick={() => navigate('/admin/dashboard')} className="px-4 py-2 rounded-lg text-sm font-medium" style={{ background: 'var(--accent)', color: '#09090b' }}>
             Back to Dashboard
           </button>
@@ -689,7 +689,7 @@ export default function AdminEditor() {
               />
             ))}
           </AnimatePresence>
-          <button onClick={addArrayItem} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
+          <button onClick={addArrayItem} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
             <Plus size={16} /> Add New Item
           </button>
         </div>
@@ -771,7 +771,7 @@ export default function AdminEditor() {
               <AlertCircle size={16} className="text-red-400" />
             )}
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{toast.message}</span>
-            <button onClick={() => setToast(null)} className="ml-2 text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300">
+            <button onClick={() => setToast(null)} className="ml-2 text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300">
               <X size={14} />
             </button>
           </motion.div>
@@ -801,7 +801,7 @@ export default function AdminEditor() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Reset Section?</h3>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">This will revert to default data</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">This will revert to default data</p>
                 </div>
               </div>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
