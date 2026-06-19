@@ -1,11 +1,11 @@
-import { GitBranch, Link, Globe, Mail, Coffee, Cat,  } from 'lucide-react';
+import { Cat, Link2, Mail, Globe, Coffee } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { usePortfolioData } from '../DataContext';
 
 const iconMap = {
   'github': Cat,
-  'linkedin': Link,
-  'twitter': Link,
+  'linkedin': Link2,
+  'twitter': Link2,
   'email': Mail,
   'default': Globe,
 };

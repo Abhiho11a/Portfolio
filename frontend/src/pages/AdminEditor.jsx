@@ -22,7 +22,6 @@ const SECTION_CONFIGS = {
       { key: 'description', label: 'Description', type: 'text' },
       { key: 'location', label: 'Location', type: 'text' },
       { key: 'status', label: 'Status Text', type: 'text' },
-      { key: 'highlights', label: 'Tech Highlights', type: 'highlights' },
     ],
   },
   skills: {
@@ -435,17 +434,27 @@ function ProofOfWorkEditor({ data, onChange }) {
 function FooterEditor({ data, onChange }) {
   const socials = data?.socials || [];
   return (
-    <div className="space-y-3">
-      <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">Social Links</label>
-      {socials.map((s, i) => (
-        <div key={i} className="flex items-center gap-2">
-          <input type="text" value={s.label || ''} onChange={(e) => { const arr = [...socials]; arr[i] = { ...arr[i], label: e.target.value }; onChange({ ...data, socials: arr }); }} className={`${inputClass} w-36`} placeholder="Label" />
-          <input type="text" value={s.href || ''} onChange={(e) => { const arr = [...socials]; arr[i] = { ...arr[i], href: e.target.value }; onChange({ ...data, socials: arr }); }} className={`${inputClass} flex-1`} placeholder="URL" />
-          <button onClick={() => onChange({ ...data, socials: socials.filter((_, idx) => idx !== i) })} className="p-1.5 text-red-400 hover:bg-red-500/10 rounded-lg"><Trash2 size={14} /></button>
-        </div>
-      ))}
-      <button onClick={() => onChange({ ...data, socials: [...socials, { label: '', href: '' }] })} className="flex items-center gap-2 text-xs px-3 py-2 rounded-lg" style={{ color: 'var(--accent)', background: 'rgba(var(--accent-rgb), 0.08)' }}>
-        <Plus size={12} /> Add Link
+    <div className="space-y-4">
+      <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">Social Links</label>
+      <div className="space-y-3">
+        {socials.map((s, i) => (
+          <div key={i} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 glass rounded-xl border border-zinc-200/60 dark:border-zinc-800/60">
+            <div className="w-full sm:w-1/3">
+              <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Platform Name</label>
+              <input type="text" value={s.label || ''} onChange={(e) => { const arr = [...socials]; arr[i] = { ...arr[i], label: e.target.value }; onChange({ ...data, socials: arr }); }} className={`${inputClass} !py-2`} placeholder="e.g. Github" />
+            </div>
+            <div className="w-full sm:flex-1">
+              <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Profile URL</label>
+              <input type="url" value={s.href || ''} onChange={(e) => { const arr = [...socials]; arr[i] = { ...arr[i], href: e.target.value }; onChange({ ...data, socials: arr }); }} className={`${inputClass} !py-2`} placeholder="https://..." />
+            </div>
+            <button onClick={() => onChange({ ...data, socials: socials.filter((_, idx) => idx !== i) })} className="mt-5 sm:mt-0 p-2.5 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors">
+              <Trash2 size={16} />
+            </button>
+          </div>
+        ))}
+      </div>
+      <button onClick={() => onChange({ ...data, socials: [...socials, { label: '', href: '' }] })} className="flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-xl border border-dashed transition-colors" style={{ color: 'var(--accent)', borderColor: 'rgba(var(--accent-rgb), 0.3)', background: 'rgba(var(--accent-rgb), 0.05)' }}>
+        <Plus size={16} /> Add Social Link
       </button>
     </div>
   );

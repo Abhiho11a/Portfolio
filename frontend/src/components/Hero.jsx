@@ -75,13 +75,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.6 }}
               className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl"
             >
-              {heroData.description}{' '}
-              {heroData.highlights?.map((h, i) => (
-                <span key={i}>
-                  <span className="font-medium" style={{ color: h.color }}>{h.text}</span>
-                  {i < heroData.highlights.length - 2 ? ', ' : i === heroData.highlights.length - 2 ? ', and ' : '.'}
-                </span>
-              ))}
+              {heroData.description}
             </motion.p>
           </TiltCard>
 
