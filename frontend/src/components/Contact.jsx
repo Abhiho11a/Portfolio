@@ -32,7 +32,7 @@ export default function Contact() {
               </div>
               <div className="flex-1">
                 <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 block">Email Me</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Send a direct message</span>
+                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Send a direct message</span>
               </div>
               <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[var(--accent)] transition-colors" />
             </button>
@@ -42,13 +42,13 @@ export default function Contact() {
               </div>
               <div className="text-left">
                 <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 block">LinkedIn</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Connect with me</span>
+                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Connect with me</span>
               </div>
               <ArrowUpRight size={14} className="ml-auto text-zinc-600 group-hover:text-[var(--secondary)] transition-colors" />
             </a>
           </div>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
+          <div className="flex items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
             <MapPin size={14} style={{ color: 'var(--accent)' }} />
             <span>{contactData.location}</span>
           </div>

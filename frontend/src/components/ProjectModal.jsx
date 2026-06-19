@@ -117,7 +117,7 @@ export default function ProjectModal({ project, onClose }) {
                   {Object.entries(project.stats).map(([key, value]) => (
                     <div key={key}>
                       <span className="block text-3xl font-black" style={{ color: project.colorHex }}>{value}</span>
-                      <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase tracking-wider font-semibold">{key}</span>
+                      <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase tracking-wider font-semibold">{key}</span>
                     </div>
                   ))}
                 </div>

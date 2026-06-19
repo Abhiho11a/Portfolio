@@ -102,7 +102,7 @@ export default function Navbar() {
             className="absolute left-0 top-0 bottom-0 w-12 pointer-events-none rounded-l-full flex items-center pl-2 md:pl-3 z-10"
             style={{ background: 'linear-gradient(to right, var(--bg-card-strong) 40%, transparent)' }}
           >
-            <ChevronLeft size={16} className="text-zinc-500 dark:text-zinc-500" />
+            <ChevronLeft size={16} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" />
           </motion.div>
         )}
       </AnimatePresence>
