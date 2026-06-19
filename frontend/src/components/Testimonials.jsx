@@ -64,7 +64,7 @@ export default function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section id="testimonials" className="relative py-24 px-6">
+    <section id="testimonials" className="relative py-16 md:py-24 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -127,17 +127,17 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">{t.name}</span>
-                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{t.role}</span>
+                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{t.role}</span>
                   <span className="block text-[11px] font-mono" style={{ color: t.color }}>{t.relation}</span>
                 </div>
               </motion.div>
 
               {/* Controls */}
               <div className="flex items-center gap-2">
-                <button onClick={prev} className="w-9 h-9 rounded-full glass border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
+                <button onClick={prev} className="w-9 h-9 rounded-full glass border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                   <ChevronLeft size={16} />
                 </button>
-                <button onClick={next} className="w-9 h-9 rounded-full glass border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
+                <button onClick={next} className="w-9 h-9 rounded-full glass border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                   <ChevronRight size={16} />
                 </button>
               </div>

@@ -12,7 +12,7 @@ export default function Contact() {
   if (loading || !contactData) return null;
 
   return (
-    <section id="contact" className="relative py-24 px-6">
+    <section id="contact" className="relative py-16 md:py-24 px-4 md:px-6">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent)' }}>&lt;connect /&gt;</span>
@@ -32,7 +32,7 @@ export default function Contact() {
               </div>
               <div className="flex-1">
                 <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 block">Email Me</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Send a direct message</span>
+                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Send a direct message</span>
               </div>
               <ArrowUpRight size={14} className="text-zinc-600 group-hover:text-[var(--accent)] transition-colors" />
             </button>
@@ -42,13 +42,13 @@ export default function Contact() {
               </div>
               <div className="text-left">
                 <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 block">LinkedIn</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Connect with me</span>
+                <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Connect with me</span>
               </div>
               <ArrowUpRight size={14} className="ml-auto text-zinc-600 group-hover:text-[var(--secondary)] transition-colors" />
             </a>
           </div>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
+          <div className="flex items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
             <MapPin size={14} style={{ color: 'var(--accent)' }} />
             <span>{contactData.location}</span>
           </div>

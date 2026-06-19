@@ -237,26 +237,26 @@ export default function TerminalUI() {
   const getLineProps = (type) => {
     switch (type) {
       case 'prompt': return { className: '', style: { color: 'var(--accent)' } };
-      case 'system': return { className: 'text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500', style: {} };
+      case 'system': return { className: 'text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500', style: {} };
       case 'success': return { className: 'font-medium', style: { color: 'var(--accent)' } };
       case 'info': return { className: '', style: { color: 'var(--secondary)' } };
       case 'warn': return { className: '', style: { color: 'var(--tertiary)' } };
       case 'error': return { className: 'text-red-400', style: {} };
       case 'cmd': return { className: 'text-zinc-600 dark:text-zinc-400', style: {} };
       case 'text': return { className: 'text-zinc-600 dark:text-zinc-400', style: {} };
-      default: return { className: 'text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500', style: {} };
+      default: return { className: 'text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500', style: {} };
     }
   };
 
   const focusInput = () => inputRef.current?.focus();
 
   return (
-    <section id="terminal" className="relative py-24 px-6">
+    <section id="terminal" className="relative py-16 md:py-24 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--tertiary)' }}>&lt;terminal /&gt;</span>
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Interactive <span className="text-gradient">Console</span></h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2">Try typing <code className="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-xs font-mono" style={{ color: 'var(--accent)' }}>help</code> to explore</p>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2">Try typing <code className="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-xs font-mono" style={{ color: 'var(--accent)' }}>help</code> to explore</p>
         </motion.div>
 
         <motion.div
@@ -272,12 +272,12 @@ export default function TerminalUI() {
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
             <div className="w-3 h-3 rounded-full bg-green-500/80" />
-            <span className="ml-3 text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 font-mono">portfolio — bash — 80×24</span>
+            <span className="ml-3 text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 font-mono">portfolio — bash — 80×24</span>
             <span className="ml-auto text-[10px] text-zinc-600 font-mono hidden sm:block">interactive mode</span>
           </div>
 
           {/* Terminal Body */}
-          <div ref={containerRef} className="p-5 md:p-6 font-mono text-sm leading-relaxed min-h-[360px] max-h-[500px] overflow-y-auto bg-white/50 dark:bg-zinc-950/50 cursor-text scrollbar-hide">
+          <div ref={containerRef} className="p-4 md:p-6 font-mono text-xs md:text-sm leading-relaxed min-h-[360px] max-h-[500px] overflow-y-auto overflow-x-auto bg-white/50 dark:bg-zinc-950/50 cursor-text scrollbar-hide">
             {/* Boot sequence */}
             {bootSequence.slice(0, bootIndex).map((line, i) => {
               const props = getLineProps(line.type);

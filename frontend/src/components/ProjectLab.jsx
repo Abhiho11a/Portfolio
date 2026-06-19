@@ -57,7 +57,7 @@ function ProjectCard({ project, index, onClick }) {
               {project.stats && Object.entries(project.stats).map(([key, value]) => (
                 <div key={key} className="text-center">
                   <span className="text-lg font-bold" style={{ color: project.colorHex }}>{value}</span>
-                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 capitalize">{key}</span>
+                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 capitalize">{key}</span>
                 </div>
               ))}
             </div>
@@ -83,13 +83,13 @@ export default function ProjectLab() {
   if (loading || projects.length === 0) return null;
 
   return (
-    <section id="projects" className="relative py-24 px-6">
+    <section id="projects" className="relative py-16 md:py-24 px-4 md:px-6">
       <div className="absolute inset-0 bg-dot-pattern opacity-30" />
       <div className="relative max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="mb-12">
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--secondary)' }}>&lt;the_lab /&gt;</span>
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Featured <span className="text-gradient">Projects</span></h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">Production-grade applications built with modern architectures and cutting-edge tech.</p>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">Production-grade applications built with modern architectures and cutting-edge tech.</p>
         </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {projects.map((project, i) => (

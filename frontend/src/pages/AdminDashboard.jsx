@@ -110,7 +110,7 @@ export default function AdminDashboard() {
             </div>
             <div>
               <h1 className="text-lg font-bold font-display text-zinc-900 dark:text-zinc-100">Admin Panel</h1>
-              <p className="text-[11px] font-mono text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">portfolio://admin/dashboard</p>
+              <p className="text-[11px] font-mono text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">portfolio://admin/dashboard</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -149,7 +149,7 @@ export default function AdminDashboard() {
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
             Manage <span className="text-gradient">Content</span>
           </h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">
             Select a section to edit its content. Changes are saved to the database and reflected instantly on the portfolio.
           </p>
         </motion.div>
@@ -196,7 +196,7 @@ export default function AdminDashboard() {
                   />
                 </div>
                 <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-1">{section.label}</h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-3 leading-relaxed">{section.description}</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-3 leading-relaxed">{section.description}</p>
                 <div className="flex items-center gap-2">
                   <span
                     className="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md"

@@ -45,13 +45,13 @@ export default function Hero() {
   );
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-6 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-16 md:pt-24 pb-12 px-4 md:px-6 overflow-hidden">
       <div className="relative z-10 w-full max-w-6xl mx-auto">
         {/* Bento Grid Container */}
         <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto_auto] gap-4 md:gap-6">
           
           {/* Main Hero Tile - Spans 2 columns */}
-          <TiltCard className="md:col-span-2 row-span-1 glass-strong rounded-[2rem] p-8 md:p-12 border border-zinc-200/60 dark:border-zinc-800/60 overflow-hidden relative">
+          <TiltCard className="md:col-span-2 row-span-1 glass-strong rounded-[2rem] p-6 md:p-12 border border-zinc-200/60 dark:border-zinc-800/60 overflow-hidden relative">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-transparent pointer-events-none" />
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
@@ -61,7 +61,7 @@ export default function Hero() {
               <span className="text-xs font-mono text-zinc-700 dark:text-zinc-300 uppercase tracking-widest">{heroData.tagline}</span>
             </motion.div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold font-display leading-[1.1] tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display leading-[1.1] tracking-tight mb-6">
               <StaggeredText text={`I'm ${heroData.name},`} className="text-zinc-900 dark:text-zinc-100 block" />
               <motion.span 
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }}
@@ -113,7 +113,7 @@ export default function Hero() {
             </a>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full group px-6 py-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 hover:translate-x-1.5 transition-all flex items-center justify-between text-zinc-900 dark:text-zinc-100">
               <span className="font-semibold text-sm">Download Resume</span>
-              <FileText size={18} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors" />
+              <FileText size={18} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors" />
             </a>
           </motion.div>
 
@@ -145,7 +145,7 @@ export default function Hero() {
             </div>
             <div>
               <h3 className="text-xl font-bold font-display text-zinc-900 dark:text-zinc-100 mb-2">Interactive Mode</h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Ask my AI agent anything in the terminal.</p>
+              <p className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Ask my AI agent anything in the terminal.</p>
             </div>
           </TiltCard>
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Layers, Code2, GraduationCap, Trophy, Terminal, BarChart2, MessageSquare, Rocket, Mail } from 'lucide-react';
+import { Home, Layers, Code2, GraduationCap, Trophy, Terminal, BarChart2, MessageSquare, Rocket, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Magnetic from './Magnetic';
 
@@ -19,8 +19,28 @@ const navItems = [
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('hero');
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
   const isClickingRef = useRef(false);
   const clickTimeoutRef = useRef(null);
+  const navRef = useRef(null);
+
+  const checkScroll = () => {
+    if (navRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = navRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 1);
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(checkScroll, 500);
+    window.addEventListener('resize', checkScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
 
   const handleNavClick = (id) => {
     setActiveSection(id);
@@ -71,13 +91,30 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 max-w-[95vw]">
+      {/* Left Scroll Hint */}
+      <AnimatePresence>
+        {canScrollLeft && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute left-0 top-0 bottom-0 w-12 pointer-events-none rounded-l-full flex items-center pl-2 md:pl-3 z-10"
+            style={{ background: 'linear-gradient(to right, var(--bg-card-strong) 40%, transparent)' }}
+          >
+            <ChevronLeft size={16} className="text-zinc-500 dark:text-zinc-500" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.nav
+        ref={navRef}
+        onScroll={checkScroll}
         data-cursor-hide="true"
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="glass-strong px-2 py-2 md:px-4 md:py-3 rounded-full flex items-center gap-1 md:gap-2 border border-zinc-300/50 dark:border-zinc-700/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+        className="glass-strong px-2 py-2 md:px-4 md:py-3 rounded-full flex items-center gap-1 md:gap-2 border border-zinc-300/50 dark:border-zinc-700/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)] overflow-x-auto scrollbar-hide"
       >
         {navItems.map((item, index) => {
           const Icon = item.icon;
@@ -91,7 +128,7 @@ export default function Navbar() {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => handleNavClick(item.id)}
-              className="relative group p-2.5 md:p-3 rounded-full transition-all duration-300 outline-none block"
+              className="relative group p-2.5 md:p-3 rounded-full transition-all duration-300 outline-none block flex-shrink-0"
             >
                 {/* Active Background */}
                 {isActive && (
@@ -151,9 +188,9 @@ export default function Navbar() {
         })}
         
         {/* Divider */}
-        <div className="w-px h-6 md:h-8 bg-zinc-200 dark:bg-zinc-800 mx-1 md:mx-2" />
+        <div className="w-px h-6 md:h-8 bg-zinc-200 dark:bg-zinc-800 mx-1 md:mx-2 flex-shrink-0" />
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           {/* Theme Toggle */}
           <ThemeToggle />
         </div>
@@ -161,7 +198,7 @@ export default function Navbar() {
         {/* Ask AI Button (Special) */}
         <a
           href="#terminal"
-          className="relative group p-2.5 md:p-3 rounded-full transition-all block"
+          className="relative group p-2.5 md:p-3 rounded-full transition-all block flex-shrink-0"
           style={{ background: 'rgba(var(--accent-rgb), 0.1)', color: 'var(--accent)', border: '1px solid rgba(var(--accent-rgb), 0.2)', boxShadow: '0 0 15px rgba(var(--accent-rgb), 0.15)' }}
           onMouseEnter={() => setHoveredIndex('ai')}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -185,6 +222,21 @@ export default function Navbar() {
           </a>
 
       </motion.nav>
+
+      {/* Right Scroll Hint */}
+      <AnimatePresence>
+        {canScrollRight && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute right-0 top-0 bottom-0 w-12 pointer-events-none rounded-r-full flex items-center justify-end pr-2 md:pr-3 z-10"
+            style={{ background: 'linear-gradient(to left, var(--bg-card-strong) 40%, transparent)' }}
+          >
+            <ChevronRight size={16} className="text-[var(--accent)] animate-pulse" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

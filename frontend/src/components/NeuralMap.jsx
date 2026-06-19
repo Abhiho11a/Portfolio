@@ -44,7 +44,7 @@ function SkillBar({ skill, color, delay }) {
               transition={{ duration: 1, delay: delay + 0.2, ease: 'easeOut' }}
             />
           </div>
-          <span className="text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-1 block">{skill.desc}</span>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-1 block">{skill.desc}</span>
         </div>
       </div>
     </motion.div>
@@ -61,7 +61,7 @@ export default function NeuralMap() {
   if (loading || !activeCategory) return null;
 
   return (
-    <section id="skills" className="relative py-24 px-6">
+    <section id="skills" className="relative py-16 md:py-24 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
