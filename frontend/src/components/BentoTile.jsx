@@ -16,7 +16,7 @@ export default function BentoTile({ children, className = '', delay = 0, glowCol
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className={`glass rounded-2xl p-6 border border-zinc-800/60 hover:border-zinc-700/80 transition-all duration-300 cursor-default group ${glowMap[glowColor] || glowMap['cyber-green']} ${className}`}
+      className={`glass rounded-2xl p-6 border border-zinc-200/60 dark:border-zinc-800/60 hover:border-zinc-300/80 dark:hover:border-zinc-700/80 transition-all duration-300 cursor-default group ${glowMap[glowColor] || glowMap['cyber-green']} ${className}`}
     >
       {children}
     </motion.div>

@@ -16,13 +16,13 @@ export default function CurrentlyBuilding() {
             <Radio size={12} className="text-red-500 animate-pulse" />
             &lt;building_now /&gt;
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100">Currently <span className="text-gradient">Building</span></h2>
-          <p className="text-zinc-500 mt-2">What I'm actively working on right now. Always shipping.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Currently <span className="text-gradient">Building</span></h2>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2">What I'm actively working on right now. Always shipping.</p>
         </motion.div>
 
         <div className="space-y-4">
           {currentProjects.map((project, i) => (
-            <motion.div key={project._id || project.title} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }} whileHover={{ x: 6, transition: { duration: 0.2 } }} className="glass rounded-xl p-5 md:p-6 border border-zinc-800/60 hover:border-zinc-700/80 transition-all group">
+            <motion.div key={project._id || project.title} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }} whileHover={{ x: 6, transition: { duration: 0.2 } }} className="glass rounded-xl p-5 md:p-6 border border-zinc-200/60 dark:border-zinc-800/60 hover:border-zinc-300/80 dark:hover:border-zinc-700/80 transition-all group">
               <div className="flex flex-col md:flex-row md:items-center gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2.5 mb-2">
@@ -32,8 +32,8 @@ export default function CurrentlyBuilding() {
                     </span>
                     <span className="text-[11px] text-zinc-600 font-mono flex items-center gap-1"><Clock size={10} /> {project.started}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-zinc-100">{project.title}</h3>
-                  <p className="text-sm text-zinc-400 mt-1">{project.description}</p>
+                  <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">{project.title}</h3>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">{project.description}</p>
                 </div>
                 <div className="flex-shrink-0 flex items-center justify-center">
                   <div className="relative w-16 h-16">
@@ -45,8 +45,8 @@ export default function CurrentlyBuilding() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-zinc-800/40">
-                {project.techStack?.map((tech) => (<span key={tech} className="px-2 py-0.5 text-[11px] text-zinc-500 bg-zinc-900/40 rounded border border-zinc-800/40">{tech}</span>))}
+              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-zinc-200/40 dark:border-zinc-800/40">
+                {project.techStack?.map((tech) => (<span key={tech} className="px-2 py-0.5 text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 bg-zinc-50/40 dark:bg-zinc-900/40 rounded border border-zinc-200/40 dark:border-zinc-800/40">{tech}</span>))}
               </div>
             </motion.div>
           ))}

@@ -84,10 +84,10 @@ export default function CursorGlow() {
       <motion.div
         className="fixed pointer-events-none z-[9999]"
         animate={{
-          x: position.x - (isHovering ? 30 : 20),
-          y: position.y - (isHovering ? 30 : 20),
+          x: position.x - 20,
+          y: position.y - 20,
           opacity: visible ? (isHovering ? 0.8 : 0.5) : 0,
-          scale: isHovering ? 1.5 : 1,
+          scale: isHovering ? 0.8 : 1,
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 150, mass: 0.8 }}
         style={{

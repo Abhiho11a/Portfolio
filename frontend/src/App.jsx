@@ -28,7 +28,7 @@ import { Toaster } from 'react-hot-toast';
 
 function PortfolioLayout() {
   return (
-    <div className="min-h-screen text-zinc-100 font-sans relative overflow-x-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
+    <div className="min-h-screen text-zinc-900 dark:text-zinc-100 font-sans relative overflow-x-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <div className="fixed inset-0 z-[999] pointer-events-none bg-noise" />
       <CursorGlow />
       <ThemeSwitcher />

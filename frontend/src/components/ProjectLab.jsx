@@ -21,7 +21,7 @@ function ProjectCard({ project, index, onClick }) {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6, delay: index * 0.15 }}
         whileHover={{ y: -6, transition: { duration: 0.25 } }}
-        className="glass rounded-2xl border border-zinc-800/60 hover:border-zinc-700/80 transition-all duration-300 overflow-hidden group"
+        className="glass rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-zinc-300/80 dark:hover:border-zinc-700/80 transition-all duration-300 overflow-hidden group"
         style={{ '--accent': project.colorHex }}
       >
         <div className="h-0.5 w-full" style={{ background: `${project.colorHex}20` }}>
@@ -36,7 +36,7 @@ function ProjectCard({ project, index, onClick }) {
                 <Icon size={20} style={{ color: project.colorHex }} />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-zinc-100">{project.title}</h3>
+                <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">{project.title}</h3>
                 <p className="text-sm font-medium" style={{ color: project.colorHex }}>{project.tagline}</p>
               </div>
             </div>
@@ -46,18 +46,18 @@ function ProjectCard({ project, index, onClick }) {
               </a>
             )}
           </div>
-          <p className="text-sm text-zinc-400 leading-relaxed mb-5">{project.description}</p>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5">{project.description}</p>
           <div className="flex flex-wrap gap-2 mb-5">
             {project.techStack?.map((tech) => (
               <span key={tech} className="px-2.5 py-1 text-xs font-medium rounded-md border" style={{ background: `${project.colorHex}10`, color: `${project.colorHex}cc`, borderColor: `${project.colorHex}25` }}>{tech}</span>
             ))}
           </div>
-          <div className="flex items-center justify-between pt-4 border-t border-zinc-800/50">
+          <div className="flex items-center justify-between pt-4 border-t border-zinc-200/50 dark:border-zinc-800/50">
             <div className="flex gap-4">
               {project.stats && Object.entries(project.stats).map(([key, value]) => (
                 <div key={key} className="text-center">
                   <span className="text-lg font-bold" style={{ color: project.colorHex }}>{value}</span>
-                  <span className="block text-xs text-zinc-500 capitalize">{key}</span>
+                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 capitalize">{key}</span>
                 </div>
               ))}
             </div>
@@ -88,8 +88,8 @@ export default function ProjectLab() {
       <div className="relative max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="mb-12">
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--secondary)' }}>&lt;the_lab /&gt;</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100">Featured <span className="text-gradient">Projects</span></h2>
-          <p className="text-zinc-500 mt-2 max-w-lg">Production-grade applications built with modern architectures and cutting-edge tech.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Featured <span className="text-gradient">Projects</span></h2>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">Production-grade applications built with modern architectures and cutting-edge tech.</p>
         </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {projects.map((project, i) => (

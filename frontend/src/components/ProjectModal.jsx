@@ -13,7 +13,7 @@ export default function ProjectModal({ project, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          className="absolute inset-0 bg-white/60 dark:bg-black/60 backdrop-blur-sm"
         />
 
         {/* Modal Container */}
@@ -32,7 +32,7 @@ export default function ProjectModal({ project, onClose }) {
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-zinc-900/50 border border-zinc-700/50 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-300/50 dark:border-zinc-700/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
           >
             <X size={20} />
           </button>
@@ -47,13 +47,13 @@ export default function ProjectModal({ project, onClose }) {
                      style={{ background: `${project.colorHex}15`, color: project.colorHex, borderColor: `${project.colorHex}30` }}>
                   Project Overview
                 </div>
-                <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">
+                <h2 className="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white font-display">
                   {project.title}
                 </h2>
                 <p className="text-xl font-medium" style={{ color: project.colorHex }}>
                   {project.tagline}
                 </p>
-                <p className="text-zinc-400 text-lg leading-relaxed max-w-2xl">
+                <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed max-w-2xl">
                   {project.description}
                 </p>
               </div>
@@ -69,7 +69,7 @@ export default function ProjectModal({ project, onClose }) {
                 )}
                 {project.links?.github && (
                   <a href={project.links.github} target="_blank" rel="noopener noreferrer"
-                     className="flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-all hover:scale-105">
+                     className="flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all hover:scale-105">
                     <Cat size={18} /> View Source Code
                   </a>
                 )}
@@ -77,10 +77,10 @@ export default function ProjectModal({ project, onClose }) {
 
               {/* Tech Stack */}
               <div className="space-y-4 pt-4">
-                <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Technologies Used</h3>
+                <h3 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Technologies Used</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack?.map((tech) => (
-                    <span key={tech} className="px-3 py-1.5 text-sm font-medium rounded-lg border bg-zinc-900/50"
+                    <span key={tech} className="px-3 py-1.5 text-sm font-medium rounded-lg border bg-zinc-50/50 dark:bg-zinc-900/50"
                           style={{ borderColor: `${project.colorHex}30`, color: `${project.colorHex}ee` }}>
                       {tech}
                     </span>
@@ -91,10 +91,10 @@ export default function ProjectModal({ project, onClose }) {
               {/* Images Section */}
               {project.images && project.images.length > 0 && (
                 <div className="space-y-4 pt-6">
-                  <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Gallery & Previews</h3>
+                  <h3 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Gallery & Previews</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.images.map((img, i) => (
-                      <div key={i} className="group relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 aspect-video">
+                      <div key={i} className="group relative rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 aspect-video">
                         <img 
                           src={img.url} 
                           alt={img.caption || `${project.title} screenshot ${i+1}`}
@@ -102,7 +102,7 @@ export default function ProjectModal({ project, onClose }) {
                         />
                         {img.caption && (
                           <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                            <p className="text-sm font-medium text-white">{img.caption}</p>
+                            <p className="text-sm font-medium text-zinc-900 dark:text-white">{img.caption}</p>
                           </div>
                         )}
                       </div>
@@ -113,11 +113,11 @@ export default function ProjectModal({ project, onClose }) {
 
               {/* Architecture/Stats (Optional bottom section) */}
               {project.stats && Object.keys(project.stats).length > 0 && (
-                <div className="pt-6 border-t border-zinc-800/50 flex flex-wrap gap-8">
+                <div className="pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50 flex flex-wrap gap-8">
                   {Object.entries(project.stats).map(([key, value]) => (
                     <div key={key}>
                       <span className="block text-3xl font-black" style={{ color: project.colorHex }}>{value}</span>
-                      <span className="text-sm text-zinc-500 uppercase tracking-wider font-semibold">{key}</span>
+                      <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase tracking-wider font-semibold">{key}</span>
                     </div>
                   ))}
                 </div>

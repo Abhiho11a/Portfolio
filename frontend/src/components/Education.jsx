@@ -38,17 +38,17 @@ function EducationCard({ item, index, isLast }) {
         {/* Card */}
         <motion.div
           whileHover={{ y: -3, transition: { duration: 0.2 } }}
-          className="flex-1 glass rounded-2xl p-5 md:p-6 border border-zinc-800/60 hover:border-zinc-700/80 transition-all duration-300 mb-6"
+          className="flex-1 glass rounded-2xl p-5 md:p-6 border border-zinc-200/60 dark:border-zinc-800/60 hover:border-zinc-300/80 dark:hover:border-zinc-700/80 transition-all duration-300 mb-6"
           style={{ boxShadow: 'none' }}
           onMouseEnter={(e) => e.currentTarget.style.boxShadow = `0 0 25px ${item.color}10`}
           onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
         >
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
             <div>
-              <h3 className="text-lg font-bold text-zinc-100">{item.level}</h3>
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">{item.level}</h3>
               <div className="flex items-center gap-2 mt-1">
-                <MapPin size={13} className="text-zinc-500" />
-                <span className="text-sm text-zinc-400">{item.institution}</span>
+                <MapPin size={13} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" />
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">{item.institution}</span>
               </div>
             </div>
             <div className="flex items-center gap-3 flex-shrink-0">
@@ -60,16 +60,16 @@ function EducationCard({ item, index, isLast }) {
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-bold bg-zinc-900/60 border border-zinc-800/50">
+            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-bold bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50">
               <TrendingUp size={14} style={{ color: item.color }} />
               <span style={{ color: item.color }}>{item.score}</span>
             </span>
-            <span className="text-xs text-zinc-500 font-mono">{item.board}</span>
+            <span className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 font-mono">{item.board}</span>
           </div>
 
           <div className="flex flex-wrap gap-2">
             {item.highlights?.map((h) => (
-              <span key={h} className="px-2.5 py-1 text-xs text-zinc-400 bg-zinc-900/40 rounded-md border border-zinc-800/40">
+              <span key={h} className="px-2.5 py-1 text-xs text-zinc-600 dark:text-zinc-400 bg-zinc-50/40 dark:bg-zinc-900/40 rounded-md border border-zinc-200/40 dark:border-zinc-800/40">
                 {h}
               </span>
             ))}
@@ -99,10 +99,10 @@ export default function Education() {
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--secondary)' }}>
             &lt;education /&gt;
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
             Academic <span className="text-gradient">Journey</span>
           </h2>
-          <p className="text-zinc-500 mt-2 max-w-lg">
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">
             Building a strong foundation in computer science and engineering.
           </p>
         </motion.div>

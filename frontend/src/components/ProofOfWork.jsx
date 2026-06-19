@@ -28,10 +28,22 @@ export default function ProofOfWork() {
   const { themeId } = useTheme();
   const { data, loading } = usePortfolioData();
   const [leetCodeData, setLeetCodeData] = useState([]);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     // Simulated fetch - falls back to mock instantly for reliability if API fails
     setLeetCodeData(generateMockLeetCodeData());
+
+    // Sync isDark with the document class
+    setIsDark(document.documentElement.classList.contains('dark'));
+    const observer = new MutationObserver(() => {
+      // Defer the heavy calendar SVG re-render until after the theme animation completes (400ms)
+      setTimeout(() => {
+        setIsDark(document.documentElement.classList.contains('dark'));
+      }, 400);
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
   }, []);
 
   if (loading) return null;
@@ -68,10 +80,10 @@ export default function ProofOfWork() {
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--tertiary)' }}>
             &lt;proof_of_work /&gt;
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
             Live <span className="text-gradient-warm">Stats</span>
           </h2>
-          <p className="text-zinc-500 mt-2 max-w-lg">
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">
             Real-time metrics from GitHub and LeetCode — always shipping, always solving.
           </p>
         </motion.div>
@@ -83,15 +95,15 @@ export default function ProofOfWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass rounded-2xl p-6 md:p-8 border border-zinc-800/60 overflow-hidden"
+            className="glass rounded-2xl p-6 md:p-8 border border-zinc-200/60 dark:border-zinc-800/60 overflow-hidden"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center">
-                <GitBranch size={20} className="text-zinc-300" />
+              <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                <GitBranch size={20} className="text-zinc-700 dark:text-zinc-300" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-zinc-100">GitHub Activity</h3>
-                <p className="text-xs text-zinc-500">github.com/{githubUsername}</p>
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">GitHub Activity</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">github.com/{githubUsername}</p>
               </div>
             </div>
 
@@ -99,9 +111,10 @@ export default function ProofOfWork() {
               <div className="min-w-[650px]">
                 <GitHubCalendar 
                   username={githubUsername || 'abhiho11a'} 
-                  colorScheme="dark"
+                  colorScheme={isDark ? "dark" : "light"}
                   theme={{
-                    dark: [themeColors[0], themeColors[1]]
+                    dark: [themeColors[0], themeColors[1]],
+                    light: ['#ebedf0', themeColors[1]]
                   }}
                   hideTotalCount
                   hideColorLegend
@@ -113,10 +126,10 @@ export default function ProofOfWork() {
               {githubStats.map((stat, i) => {
                 const Icon = ICONS[i % ICONS.length];
                 return (
-                  <div key={stat.label} className="text-center p-3 rounded-xl bg-zinc-900/50 border border-zinc-800/40">
+                  <div key={stat.label} className="text-center p-3 rounded-xl bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200/40 dark:border-zinc-800/40">
                     <Icon size={16} className="mx-auto mb-1.5" style={{ color: stat.color }} />
-                    <span className="block text-lg font-bold text-zinc-100">{stat.value}</span>
-                    <span className="block text-xs text-zinc-500">{stat.label}</span>
+                    <span className="block text-lg font-bold text-zinc-900 dark:text-zinc-100">{stat.value}</span>
+                    <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{stat.label}</span>
                   </div>
                 );
               })}
@@ -129,21 +142,21 @@ export default function ProofOfWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="glass rounded-2xl p-6 md:p-8 border border-zinc-800/60 overflow-hidden"
+            className="glass rounded-2xl p-6 md:p-8 border border-zinc-200/60 dark:border-zinc-800/60 overflow-hidden"
           >
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
                   <Trophy size={20} className="text-amber-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-zinc-100">LeetCode Activity</h3>
-                  <p className="text-xs text-zinc-500">leetcode.com/u/{leetcodeUsername}</p>
+                  <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">LeetCode Activity</h3>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">leetcode.com/u/{leetcodeUsername}</p>
                 </div>
               </div>
               <div className="text-right">
                 <span className="text-2xl font-extrabold text-gradient">{leetcodeTotal}</span>
-                <span className="block text-[10px] text-zinc-500">Total Solved</span>
+                <span className="block text-[10px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Total Solved</span>
               </div>
             </div>
 
@@ -152,9 +165,10 @@ export default function ProofOfWork() {
                 {leetCodeData.length > 0 && (
                   <ActivityCalendar 
                     data={leetCodeData} 
-                    colorScheme="dark"
+                    colorScheme={isDark ? "dark" : "light"}
                     theme={{
-                      dark: [themeColors[0], themeColors[1]]
+                      dark: [themeColors[0], themeColors[1]],
+                      light: ['#ebedf0', themeColors[1]]
                     }}
                     hideTotalCount
                     hideColorLegend
@@ -168,9 +182,9 @@ export default function ProofOfWork() {
                 <div key={difficulty}>
                   <div className="flex justify-between text-sm mb-1.5">
                     <span className="font-medium" style={{ color }}>{difficulty}</span>
-                    <span className="text-zinc-500">{solved} / {total}</span>
+                    <span className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{solved} / {total}</span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-zinc-800/80 overflow-hidden">
+                  <div className="w-full h-2 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 overflow-hidden">
                     <motion.div
                       className="h-full rounded-full"
                       style={{ background: color }}

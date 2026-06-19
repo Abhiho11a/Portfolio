@@ -102,15 +102,15 @@ export default function AdminDashboard() {
       <ThemeSwitcher />
 
       {/* Top Bar */}
-      <div className="sticky top-0 z-40 glass-strong border-b border-zinc-800/60">
+      <div className="sticky top-0 z-40 glass-strong border-b border-zinc-200/60 dark:border-zinc-800/60">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'rgba(var(--accent-rgb), 0.1)', border: '1px solid rgba(var(--accent-rgb), 0.2)' }}>
               <Settings size={20} style={{ color: 'var(--accent)' }} />
             </div>
             <div>
-              <h1 className="text-lg font-bold font-display text-zinc-100">Admin Panel</h1>
-              <p className="text-[11px] font-mono text-zinc-500">portfolio://admin/dashboard</p>
+              <h1 className="text-lg font-bold font-display text-zinc-900 dark:text-zinc-100">Admin Panel</h1>
+              <p className="text-[11px] font-mono text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">portfolio://admin/dashboard</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -118,14 +118,14 @@ export default function AdminDashboard() {
               href="/"
               // target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900/60 border border-zinc-800/50 text-zinc-400 hover:text-zinc-100 hover:border-zinc-700 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all"
             >
               <ExternalLink size={14} />
               <span className="hidden sm:inline">View Portfolio</span>
             </a>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900/60 border border-zinc-800/50 text-red-400 hover:text-red-300 hover:border-red-500/30 hover:bg-red-500/5 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 text-red-400 hover:text-red-300 hover:border-red-500/30 hover:bg-red-500/5 transition-all"
             >
               <LogOut size={14} />
               <span className="hidden sm:inline">Logout</span>
@@ -146,24 +146,24 @@ export default function AdminDashboard() {
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent)' }}>
             &lt;admin_panel /&gt;
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
             Manage <span className="text-gradient">Content</span>
           </h2>
-          <p className="text-zinc-500 mt-2 max-w-lg">
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">
             Select a section to edit its content. Changes are saved to the database and reflected instantly on the portfolio.
           </p>
         </motion.div>
 
         {/* Quick Stats */}
         <div className="flex items-center gap-4 mb-8 overflow-x-auto pb-2 scrollbar-hide">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/40 border border-zinc-800/40 flex-shrink-0">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-50/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 flex-shrink-0">
             <Database size={14} style={{ color: 'var(--accent)' }} />
-            <span className="text-xs font-mono text-zinc-400">
+            <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400">
               {loading ? 'Loading...' : 'Database connected'}
             </span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/40 border border-zinc-800/40 flex-shrink-0">
-            <span className="text-xs font-mono text-zinc-400">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-50/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 flex-shrink-0">
+            <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400">
               {sections.length} editable sections
             </span>
           </div>
@@ -180,7 +180,7 @@ export default function AdminDashboard() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 onClick={() => navigate(`/admin/edit/${section.id}`)}
-                className="glass rounded-2xl p-6 border border-zinc-800/60 hover:border-zinc-700/80 transition-all duration-300 text-left group"
+                className="glass rounded-2xl p-6 border border-zinc-200/60 dark:border-zinc-800/60 hover:border-zinc-300/80 dark:hover:border-zinc-700/80 transition-all duration-300 text-left group"
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
               >
                 <div className="flex items-start justify-between mb-4">
@@ -192,11 +192,11 @@ export default function AdminDashboard() {
                   </div>
                   <ChevronRight
                     size={16}
-                    className="text-zinc-600 group-hover:text-zinc-300 group-hover:translate-x-1 transition-all"
+                    className="text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 group-hover:translate-x-1 transition-all"
                   />
                 </div>
-                <h3 className="text-base font-bold text-zinc-100 mb-1">{section.label}</h3>
-                <p className="text-xs text-zinc-500 mb-3 leading-relaxed">{section.description}</p>
+                <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-1">{section.label}</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-3 leading-relaxed">{section.description}</p>
                 <div className="flex items-center gap-2">
                   <span
                     className="text-[11px] font-mono font-medium px-2.5 py-1 rounded-md"

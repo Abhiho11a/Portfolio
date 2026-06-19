@@ -54,7 +54,7 @@ export default function AdminLogin() {
         <motion.div
           animate={shake ? { x: [-10, 10, -10, 10, 0] } : {}}
           transition={{ duration: 0.4 }}
-          className="glass-strong rounded-2xl border border-zinc-800/60 overflow-hidden"
+          className="glass-strong rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 overflow-hidden"
         >
           {/* Header */}
           <div className="p-8 pb-0">
@@ -63,17 +63,17 @@ export default function AdminLogin() {
                 <Shield size={24} style={{ color: 'var(--accent)' }} />
               </div>
               <div>
-                <h1 className="text-xl font-bold font-display text-zinc-100">Admin Access</h1>
-                <p className="text-xs font-mono text-zinc-500">portfolio://admin/auth</p>
+                <h1 className="text-xl font-bold font-display text-zinc-900 dark:text-zinc-100">Admin Access</h1>
+                <p className="text-xs font-mono text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">portfolio://admin/auth</p>
               </div>
             </div>
           </div>
 
           {/* Terminal-style divider */}
           <div className="px-8 py-4">
-            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-900/60 border border-zinc-800/40">
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/40 dark:border-zinc-800/40">
               <Terminal size={13} style={{ color: 'var(--accent)' }} />
-              <span className="text-xs font-mono text-zinc-500">
+              <span className="text-xs font-mono text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
                 <span style={{ color: 'var(--accent)' }}>admin@portfolio</span>:~$ authenticate
               </span>
             </div>
@@ -83,14 +83,14 @@ export default function AdminLogin() {
           <form onSubmit={handleSubmit} className="px-8 pb-8 space-y-4">
             {/* Username */}
             <div>
-              <label className="block text-xs font-medium text-zinc-400 mb-2 uppercase tracking-wider">Username</label>
+              <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">Username</label>
               <div className="relative">
-                <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
+                <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" />
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800/50 text-zinc-100 text-sm font-mono placeholder-zinc-600 outline-none transition-all duration-300"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-900 dark:text-zinc-100 text-sm font-mono placeholder-zinc-600 outline-none transition-all duration-300"
                   style={{ '--tw-ring-color': 'var(--accent)' }}
                   onFocus={(e) => e.target.style.borderColor = 'rgba(var(--accent-rgb), 0.5)'}
                   onBlur={(e) => e.target.style.borderColor = 'rgba(63, 63, 70, 0.5)'}
@@ -103,14 +103,14 @@ export default function AdminLogin() {
 
             {/* Password */}
             <div>
-              <label className="block text-xs font-medium text-zinc-400 mb-2 uppercase tracking-wider">Password</label>
+              <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-2 uppercase tracking-wider">Password</label>
               <div className="relative">
-                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
+                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-12 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800/50 text-zinc-100 text-sm font-mono placeholder-zinc-600 outline-none transition-all duration-300"
+                  className="w-full pl-10 pr-12 py-3 rounded-xl bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-900 dark:text-zinc-100 text-sm font-mono placeholder-zinc-600 outline-none transition-all duration-300"
                   onFocus={(e) => e.target.style.borderColor = 'rgba(var(--accent-rgb), 0.5)'}
                   onBlur={(e) => e.target.style.borderColor = 'rgba(63, 63, 70, 0.5)'}
                   placeholder="Enter password"
@@ -120,7 +120,7 @@ export default function AdminLogin() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 transition-colors"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors"
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -150,7 +150,7 @@ export default function AdminLogin() {
               }}
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-zinc-900 border-t-transparent rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-zinc-200 dark:border-zinc-900 border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
                   Authenticate
@@ -163,7 +163,7 @@ export default function AdminLogin() {
 
         {/* Back to portfolio */}
         <div className="text-center mt-6">
-          <a href="/" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors font-mono">
+          <a href="/" className="text-xs text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors font-mono">
             ← Back to Portfolio
           </a>
         </div>

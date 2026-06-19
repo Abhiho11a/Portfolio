@@ -26,16 +26,16 @@ function SkillBar({ skill, color, delay }) {
       transition={{ duration: 0.4, delay }}
       className="group/skill"
     >
-      <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/40 hover:border-zinc-700/60 transition-all hover:bg-zinc-900/60">
+      <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-50/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300/60 dark:hover:border-zinc-700/60 transition-all hover:bg-zinc-50/60 dark:hover:bg-zinc-900/60">
         <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${color}12` }}>
           <Icon size={16} style={{ color }} className="opacity-70 group-hover/skill:opacity-100 transition-opacity" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-sm font-semibold text-zinc-200">{skill.name}</span>
+            <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">{skill.name}</span>
             <span className="text-xs font-mono font-bold" style={{ color }}>{skill.level}%</span>
           </div>
-          <div className="w-full h-1.5 rounded-full bg-zinc-800/80 overflow-hidden">
+          <div className="w-full h-1.5 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 overflow-hidden">
             <motion.div
               className="h-full rounded-full"
               style={{ background: `linear-gradient(90deg, ${color}, ${color}88)` }}
@@ -44,7 +44,7 @@ function SkillBar({ skill, color, delay }) {
               transition={{ duration: 1, delay: delay + 0.2, ease: 'easeOut' }}
             />
           </div>
-          <span className="text-[11px] text-zinc-500 mt-1 block">{skill.desc}</span>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-1 block">{skill.desc}</span>
         </div>
       </div>
     </motion.div>
@@ -74,7 +74,7 @@ export default function NeuralMap() {
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent)' }}>
             &lt;neural_map /&gt;
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
             Skills & <span className="text-gradient">Expertise</span>
           </h2>
         </motion.div>
@@ -97,8 +97,8 @@ export default function NeuralMap() {
                   onClick={() => setActiveTab(cat.id)}
                   className={`relative flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 flex-shrink-0 group ${
                     isActive
-                      ? 'glass border border-zinc-700/60'
-                      : 'border border-transparent hover:bg-zinc-900/40 hover:border-zinc-800/40'
+                      ? 'glass border border-zinc-300/60 dark:border-zinc-700/60'
+                      : 'border border-transparent hover:bg-zinc-50/40 dark:hover:bg-zinc-900/40 hover:border-zinc-200/40 dark:hover:border-zinc-800/40'
                   }`}
                 >
                   {/* Active glow */}
@@ -121,7 +121,7 @@ export default function NeuralMap() {
                     <Icon size={18} style={{ color: isActive ? cat.color : '#a1a1aa' }} />
                   </div>
                   <div className="relative z-10">
-                    <span className={`text-sm font-semibold block transition-colors ${isActive ? 'text-zinc-100' : 'text-zinc-400'}`}>
+                    <span className={`text-sm font-semibold block transition-colors ${isActive ? 'text-zinc-900 dark:text-zinc-100' : 'text-zinc-600 dark:text-zinc-400'}`}>
                       {cat.label}
                     </span>
                     <span className="text-[11px] text-zinc-600 hidden lg:block">{cat.tagline}</span>
@@ -135,7 +135,7 @@ export default function NeuralMap() {
           </motion.div>
 
           {/* Skill Details (Right panel) */}
-          <div className="glass rounded-2xl p-6 md:p-8 border border-zinc-800/60 min-h-[360px]">
+          <div className="glass rounded-2xl p-6 md:p-8 border border-zinc-200/60 dark:border-zinc-800/60 min-h-[360px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -150,7 +150,7 @@ export default function NeuralMap() {
                     className="w-3 h-3 rounded-full"
                     style={{ background: activeCategory.color, boxShadow: `0 0 10px ${activeCategory.color}60` }}
                   />
-                  <h3 className="text-xl font-bold text-zinc-100">{activeCategory.label}</h3>
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">{activeCategory.label}</h3>
                   <span className="text-xs font-mono px-2 py-0.5 rounded-md" style={{ color: activeCategory.color, background: `${activeCategory.color}12` }}>
                     {activeCategory.tagline}
                   </span>

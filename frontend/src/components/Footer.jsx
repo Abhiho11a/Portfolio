@@ -19,13 +19,13 @@ export default function Footer() {
   const socials = footer.socials || [];
 
   return (
-    <footer className="relative py-12 px-6 border-t border-zinc-800/40">
+    <footer className="relative py-12 px-6 border-t border-zinc-200/40 dark:border-zinc-800/40">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex items-center gap-2 text-sm text-zinc-500"
+          className="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500"
         >
           <span>Built with</span>
           <span className="font-mono" style={{ color: 'var(--accent)' }}>React</span>
@@ -45,7 +45,7 @@ export default function Footer() {
                 aria-label={label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-zinc-900/60 border border-zinc-800/50 flex items-center justify-center text-zinc-500 transition-all hover:border-[var(--accent)]/30 hover:text-[var(--accent)]"
+                className="w-9 h-9 rounded-lg bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 transition-all hover:border-[var(--accent)]/30 hover:text-[var(--accent)]"
               >
                 <Icon size={16} />
               </a>

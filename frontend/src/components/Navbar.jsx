@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Layers, Code2, GraduationCap, Trophy, Terminal, BarChart2, MessageSquare, Rocket, Mail } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 import Magnetic from './Magnetic';
 
 const navItems = [
@@ -76,7 +77,7 @@ export default function Navbar() {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="glass-strong px-2 py-2 md:px-4 md:py-3 rounded-full flex items-center gap-1 md:gap-2 border border-zinc-700/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+        className="glass-strong px-2 py-2 md:px-4 md:py-3 rounded-full flex items-center gap-1 md:gap-2 border border-zinc-300/50 dark:border-zinc-700/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
       >
         {navItems.map((item, index) => {
           const Icon = item.icon;
@@ -96,7 +97,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute inset-0 bg-zinc-800/80 rounded-full border border-zinc-700/50"
+                    className="absolute inset-0 bg-zinc-100/80 dark:bg-zinc-800/80 rounded-full border border-zinc-300/50 dark:border-zinc-700/50"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -126,11 +127,11 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 5, scale: 0.8 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 glass bg-zinc-900 border border-zinc-700/50 rounded-lg text-xs font-medium text-zinc-200 whitespace-nowrap shadow-xl hidden md:block"
+                      className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 glass bg-zinc-50 dark:bg-zinc-900 border border-zinc-300/50 dark:border-zinc-700/50 rounded-lg text-xs font-medium text-zinc-800 dark:text-zinc-200 whitespace-nowrap shadow-xl hidden md:block"
                     >
                       {item.label}
                       {/* Arrow */}
-                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-900 border-b border-r border-zinc-700/50 rotate-45" />
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-50 dark:bg-zinc-900 border-b border-r border-zinc-300/50 dark:border-zinc-700/50 rotate-45" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -139,7 +140,7 @@ export default function Navbar() {
                 <motion.div 
                   animate={{ 
                     scale: isHovered ? 0.95 : isActive ? 1.1 : 1,
-                    color: isActive ? 'var(--accent)' : isHovered ? '#fafafa' : '#a1a1aa'
+                    color: isActive ? 'var(--accent)' : isHovered ? 'var(--text-primary)' : 'var(--text-muted)'
                   }}
                   className="relative z-10 flex items-center justify-center"
                 >
@@ -150,7 +151,12 @@ export default function Navbar() {
         })}
         
         {/* Divider */}
-        <div className="w-px h-6 md:h-8 bg-zinc-800 mx-1 md:mx-2" />
+        <div className="w-px h-6 md:h-8 bg-zinc-200 dark:bg-zinc-800 mx-1 md:mx-2" />
+
+        <div className="flex items-center gap-2">
+          {/* Theme Toggle */}
+          <ThemeToggle />
+        </div>
 
         {/* Ask AI Button (Special) */}
         <a
@@ -167,11 +173,11 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 5, scale: 0.8 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 glass bg-zinc-900 rounded-lg text-xs font-medium whitespace-nowrap shadow-xl hidden md:block"
+                  className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 glass bg-zinc-50 dark:bg-zinc-900 rounded-lg text-xs font-medium whitespace-nowrap shadow-xl hidden md:block"
                   style={{ color: 'var(--accent)', borderColor: 'rgba(var(--accent-rgb), 0.4)' }}
                 >
                   Ask My AI
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-900 border-b border-r rotate-45" style={{ borderColor: 'rgba(var(--accent-rgb), 0.4)' }} />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-50 dark:bg-zinc-900 border-b border-r rotate-45" style={{ borderColor: 'rgba(var(--accent-rgb), 0.4)' }} />
                 </motion.div>
               )}
             </AnimatePresence>

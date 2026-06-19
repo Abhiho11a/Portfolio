@@ -76,7 +76,7 @@ export default function Testimonials() {
           <span className="text-xs font-mono text-cyber-purple tracking-widest uppercase mb-3 block">
             &lt;social_proof /&gt;
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
             What People <span className="text-gradient">Say</span>
           </h2>
         </motion.div>
@@ -86,7 +86,7 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass rounded-2xl p-8 md:p-10 border border-zinc-800/60 relative overflow-hidden"
+          className="glass rounded-2xl p-8 md:p-10 border border-zinc-200/60 dark:border-zinc-800/60 relative overflow-hidden"
         >
           {/* Background Quote Mark */}
           <Quote size={120} className="absolute top-4 right-4 text-zinc-800/20 rotate-180" />
@@ -98,7 +98,7 @@ export default function Testimonials() {
               initial={{ opacity: 0, x: direction * 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4 }}
-              className="text-lg md:text-xl text-zinc-300 leading-relaxed mb-8 italic"
+              className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 leading-relaxed mb-8 italic"
             >
               "{t.text}"
             </motion.p>
@@ -126,18 +126,18 @@ export default function Testimonials() {
                   {t.avatar}
                 </div>
                 <div>
-                  <span className="block text-sm font-semibold text-zinc-100">{t.name}</span>
-                  <span className="block text-xs text-zinc-500">{t.role}</span>
+                  <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">{t.name}</span>
+                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{t.role}</span>
                   <span className="block text-[11px] font-mono" style={{ color: t.color }}>{t.relation}</span>
                 </div>
               </motion.div>
 
               {/* Controls */}
               <div className="flex items-center gap-2">
-                <button onClick={prev} className="w-9 h-9 rounded-full glass border border-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-700 transition-all">
+                <button onClick={prev} className="w-9 h-9 rounded-full glass border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                   <ChevronLeft size={16} />
                 </button>
-                <button onClick={next} className="w-9 h-9 rounded-full glass border border-zinc-800/50 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-700 transition-all">
+                <button onClick={next} className="w-9 h-9 rounded-full glass border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                   <ChevronRight size={16} />
                 </button>
               </div>

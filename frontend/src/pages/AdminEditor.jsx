@@ -142,7 +142,7 @@ const SECTION_CONFIGS = {
 //  FIELD RENDERERS
 // ═══════════════════════════════════════════════════════════════
 
-const inputClass = "w-full px-4 py-3 rounded-xl bg-zinc-900/60 border border-zinc-800/50 text-zinc-100 text-sm placeholder-zinc-600 outline-none transition-all duration-300 focus:border-[rgba(var(--accent-rgb),0.5)]";
+const inputClass = "w-full px-4 py-3 rounded-xl bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-900 dark:text-zinc-100 text-sm placeholder-zinc-600 outline-none transition-all duration-300 focus:border-[rgba(var(--accent-rgb),0.5)]";
 
 function FieldRenderer({ field, value, onChange }) {
   switch (field.type) {
@@ -189,7 +189,7 @@ function FieldRenderer({ field, value, onChange }) {
         <div className="flex items-center gap-3">
           <input type="color" value={value || '#10B981'} onChange={(e) => onChange(e.target.value)} className="w-10 h-10 rounded-lg cursor-pointer border-0 bg-transparent" />
           <input type="text" value={value || ''} onChange={(e) => onChange(e.target.value)} className={`${inputClass} flex-1`} placeholder="#10B981" />
-          <div className="w-8 h-8 rounded-lg border border-zinc-700/50" style={{ background: value || '#10B981' }} />
+          <div className="w-8 h-8 rounded-lg border border-zinc-300/50 dark:border-zinc-700/50" style={{ background: value || '#10B981' }} />
         </div>
       );
 
@@ -204,10 +204,10 @@ function FieldRenderer({ field, value, onChange }) {
     case 'checkbox':
       return (
         <label className="flex items-center gap-3 cursor-pointer group">
-          <div className={`w-5 h-5 rounded-md border transition-all flex items-center justify-center ${value ? 'border-[var(--accent)]' : 'border-zinc-700 bg-zinc-900/60'}`} style={value ? { background: 'var(--accent)' } : {}} onClick={() => onChange(!value)}>
+          <div className={`w-5 h-5 rounded-md border transition-all flex items-center justify-center ${value ? 'border-[var(--accent)]' : 'border-zinc-300 dark:border-zinc-700 bg-zinc-50/60 dark:bg-zinc-900/60'}`} style={value ? { background: 'var(--accent)' } : {}} onClick={() => onChange(!value)}>
             {value && <Check size={14} className="text-zinc-900" />}
           </div>
-          <span className="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors">{field.label}</span>
+          <span className="text-sm text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200 transition-colors">{field.label}</span>
         </label>
       );
 
@@ -256,20 +256,20 @@ function FieldRenderer({ field, value, onChange }) {
       return (
         <div className="space-y-4 pl-2 border-l-2" style={{ borderColor: 'rgba(var(--accent-rgb), 0.2)' }}>
           {(value || []).map((skill, i) => (
-            <div key={i} className="flex flex-col gap-3 bg-zinc-900/40 p-4 rounded-xl border border-zinc-800/50">
+            <div key={i} className="flex flex-col gap-3 bg-zinc-50/40 dark:bg-zinc-900/40 p-4 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50">
               <div className="flex items-center gap-3">
                 <div className="flex-1">
-                  <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Skill Name</label>
+                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Skill Name</label>
                   <input type="text" value={skill.name || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], name: e.target.value }; onChange(arr); }} className={inputClass} placeholder="e.g. React" />
                 </div>
                 <div className="w-24">
-                  <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Level (%)</label>
+                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Level (%)</label>
                   <input type="number" min="0" max="100" value={skill.level || 0} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], level: parseInt(e.target.value) }; onChange(arr); }} className={inputClass} />
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex-1">
-                  <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-1">Description (Optional)</label>
+                  <label className="block text-[10px] font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase mb-1">Description (Optional)</label>
                   <input type="text" value={skill.desc || ''} onChange={(e) => { const arr = [...(value || [])]; arr[i] = { ...arr[i], desc: e.target.value }; onChange(arr); }} className={inputClass} placeholder="e.g. Hooks, Context" />
                 </div>
                 <button onClick={() => onChange((value || []).filter((_, idx) => idx !== i))} className="mt-5 p-3 rounded-lg text-red-400 bg-red-500/5 border border-red-500/10 hover:bg-red-500/20 transition-colors">
@@ -303,17 +303,17 @@ function ItemCard({ item, index, fields, titleKey, onUpdate, onDelete }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      className="glass rounded-xl border border-zinc-800/60 overflow-hidden"
+      className="glass rounded-xl border border-zinc-200/60 dark:border-zinc-800/60 overflow-hidden"
     >
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between p-4 hover:bg-zinc-900/30 transition-colors"
+        className="w-full flex items-center justify-between p-4 hover:bg-zinc-50/30 dark:hover:bg-zinc-900/30 transition-colors"
       >
         <div className="flex items-center gap-3">
-          <span className="w-7 h-7 rounded-lg bg-zinc-900/60 border border-zinc-800/40 flex items-center justify-center text-xs font-bold text-zinc-500">
+          <span className="w-7 h-7 rounded-lg bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-xs font-bold text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
             {index + 1}
           </span>
-          <span className="text-sm font-semibold text-zinc-200 text-left">{title}</span>
+          <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 text-left">{title}</span>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -322,7 +322,7 @@ function ItemCard({ item, index, fields, titleKey, onUpdate, onDelete }) {
           >
             <Trash2 size={14} />
           </button>
-          {expanded ? <ChevronUp size={16} className="text-zinc-500" /> : <ChevronDown size={16} className="text-zinc-500" />}
+          {expanded ? <ChevronUp size={16} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" /> : <ChevronDown size={16} className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500" />}
         </div>
       </button>
 
@@ -335,10 +335,10 @@ function ItemCard({ item, index, fields, titleKey, onUpdate, onDelete }) {
             transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
-            <div className="px-4 pb-4 space-y-4 border-t border-zinc-800/40 pt-4">
+            <div className="px-4 pb-4 space-y-4 border-t border-zinc-200/40 dark:border-zinc-800/40 pt-4">
               {fields.map((field) => (
                 <div key={field.key}>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">
+                  <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">
                     {field.label}
                   </label>
                   <FieldRenderer
@@ -370,17 +370,17 @@ function ProofOfWorkEditor({ data, onChange }) {
   return (
     <div className="space-y-8">
       {/* GitHub */}
-      <div className="glass rounded-xl p-6 border border-zinc-800/60">
-        <h3 className="text-base font-bold text-zinc-100 mb-4 flex items-center gap-2">
+      <div className="glass rounded-xl p-6 border border-zinc-200/60 dark:border-zinc-800/60">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <div className="w-3 h-3 rounded-full" style={{ background: '#10B981' }} /> GitHub
         </h3>
         <div className="space-y-3">
           <div>
-            <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Username</label>
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">Username</label>
             <input type="text" value={gh.username || ''} onChange={(e) => updateGithub('username', e.target.value)} className={inputClass} placeholder="GitHub username" />
           </div>
           <div>
-            <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Stats</label>
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">Stats</label>
             {(gh.stats || []).map((stat, i) => (
               <div key={i} className="flex items-center gap-2 mb-2">
                 <input type="text" value={stat.label || ''} onChange={(e) => { const arr = [...(gh.stats || [])]; arr[i] = { ...arr[i], label: e.target.value }; updateGithub('stats', arr); }} className={`${inputClass} flex-1`} placeholder="Label" />
@@ -397,21 +397,21 @@ function ProofOfWorkEditor({ data, onChange }) {
       </div>
 
       {/* LeetCode */}
-      <div className="glass rounded-xl p-6 border border-zinc-800/60">
-        <h3 className="text-base font-bold text-zinc-100 mb-4 flex items-center gap-2">
+      <div className="glass rounded-xl p-6 border border-zinc-200/60 dark:border-zinc-800/60">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           <div className="w-3 h-3 rounded-full" style={{ background: '#F59E0B' }} /> LeetCode
         </h3>
         <div className="space-y-3">
           <div>
-            <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Username</label>
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">Username</label>
             <input type="text" value={lc.username || ''} onChange={(e) => updateLeetcode('username', e.target.value)} className={inputClass} placeholder="LeetCode username" />
           </div>
           <div>
-            <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Total Solved</label>
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">Total Solved</label>
             <input type="number" value={lc.totalSolved || 0} onChange={(e) => updateLeetcode('totalSolved', parseInt(e.target.value))} className={inputClass} />
           </div>
           <div>
-            <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Difficulty Stats</label>
+            <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">Difficulty Stats</label>
             {(lc.stats || []).map((stat, i) => (
               <div key={i} className="flex items-center gap-2 mb-2">
                 <input type="text" value={stat.difficulty || ''} onChange={(e) => { const arr = [...(lc.stats || [])]; arr[i] = { ...arr[i], difficulty: e.target.value }; updateLeetcode('stats', arr); }} className={`${inputClass} w-28`} placeholder="Difficulty" />
@@ -436,7 +436,7 @@ function FooterEditor({ data, onChange }) {
   const socials = data?.socials || [];
   return (
     <div className="space-y-3">
-      <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Social Links</label>
+      <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">Social Links</label>
       {socials.map((s, i) => (
         <div key={i} className="flex items-center gap-2">
           <input type="text" value={s.label || ''} onChange={(e) => { const arr = [...socials]; arr[i] = { ...arr[i], label: e.target.value }; onChange({ ...data, socials: arr }); }} className={`${inputClass} w-36`} placeholder="Label" />
@@ -476,7 +476,7 @@ function AchievementsEditor({ data, onChange }) {
     <div className="space-y-8">
       {/* Hackathons */}
       <div>
-        <h3 className="text-base font-bold text-zinc-100 mb-4 flex items-center gap-2">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           🏆 Hackathon Wins
           <span className="text-xs font-mono px-2 py-0.5 rounded-md" style={{ color: 'var(--accent)', background: 'rgba(var(--accent-rgb), 0.1)' }}>{hackathons.length} items</span>
         </h3>
@@ -492,7 +492,7 @@ function AchievementsEditor({ data, onChange }) {
               onDelete={(idx) => onChange({ ...data, hackathons: hackathons.filter((_, j) => j !== idx) })}
             />
           ))}
-          <button onClick={() => onChange({ ...data, hackathons: [...hackathons, { ...config.defaultHackathon }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-700/50 text-sm text-zinc-500 hover:text-zinc-300 hover:border-zinc-600 transition-all">
+          <button onClick={() => onChange({ ...data, hackathons: [...hackathons, { ...config.defaultHackathon }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
             <Plus size={16} /> Add Hackathon Win
           </button>
         </div>
@@ -500,7 +500,7 @@ function AchievementsEditor({ data, onChange }) {
 
       {/* Events */}
       <div>
-        <h3 className="text-base font-bold text-zinc-100 mb-4 flex items-center gap-2">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
           📅 Events & Participation
           <span className="text-xs font-mono px-2 py-0.5 rounded-md" style={{ color: 'var(--secondary)', background: 'rgba(var(--secondary-rgb), 0.1)' }}>{events.length} items</span>
         </h3>
@@ -516,7 +516,7 @@ function AchievementsEditor({ data, onChange }) {
               onDelete={(idx) => onChange({ ...data, events: events.filter((_, j) => j !== idx) })}
             />
           ))}
-          <button onClick={() => onChange({ ...data, events: [...events, { ...config.defaultEvent }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-700/50 text-sm text-zinc-500 hover:text-zinc-300 hover:border-zinc-600 transition-all">
+          <button onClick={() => onChange({ ...data, events: [...events, { ...config.defaultEvent }] })} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
             <Plus size={16} /> Add Event
           </button>
         </div>
@@ -608,8 +608,8 @@ export default function AdminEditor() {
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <div className="text-center">
           <AlertCircle size={48} className="text-red-400 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-zinc-100 mb-2">Section not found</h2>
-          <p className="text-zinc-500 mb-4">The section "{section}" doesn't exist.</p>
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">Section not found</h2>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-4">The section "{section}" doesn't exist.</p>
           <button onClick={() => navigate('/admin/dashboard')} className="px-4 py-2 rounded-lg text-sm font-medium" style={{ background: 'var(--accent)', color: '#09090b' }}>
             Back to Dashboard
           </button>
@@ -651,10 +651,10 @@ export default function AdminEditor() {
   const renderContent = () => {
     if (config.type === 'object') {
       return (
-        <div className="glass rounded-xl p-6 border border-zinc-800/60 space-y-5">
+        <div className="glass rounded-xl p-6 border border-zinc-200/60 dark:border-zinc-800/60 space-y-5">
           {config.fields.map((field) => (
             <div key={field.key}>
-              <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">
+              <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1.5 uppercase tracking-wider">
                 {field.label}
               </label>
               <FieldRenderer field={field} value={sectionData[field.key]} onChange={(val) => updateField(field.key, val)} />
@@ -680,7 +680,7 @@ export default function AdminEditor() {
               />
             ))}
           </AnimatePresence>
-          <button onClick={addArrayItem} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-700/50 text-sm text-zinc-500 hover:text-zinc-300 hover:border-zinc-600 transition-all">
+          <button onClick={addArrayItem} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-dashed border-zinc-300/50 dark:border-zinc-700/50 text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
             <Plus size={16} /> Add New Item
           </button>
         </div>
@@ -705,16 +705,16 @@ export default function AdminEditor() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Top Bar */}
-      <div className="sticky top-0 z-40 glass-strong border-b border-zinc-800/60">
+      <div className="sticky top-0 z-40 glass-strong border-b border-zinc-200/60 dark:border-zinc-800/60">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button onClick={() => navigate('/admin/dashboard')} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-100 transition-colors">
+          <button onClick={() => navigate('/admin/dashboard')} className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
             <ArrowLeft size={16} />
             <span className="hidden sm:inline">Back to Dashboard</span>
           </button>
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowResetConfirm(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900/60 border border-zinc-800/50 text-zinc-400 hover:text-amber-400 hover:border-amber-500/30 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-600 dark:text-zinc-400 hover:text-amber-400 hover:border-amber-500/30 transition-all"
             >
               <RotateCcw size={14} />
               <span className="hidden sm:inline">Reset</span>
@@ -725,7 +725,7 @@ export default function AdminEditor() {
               className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-bold transition-all disabled:opacity-50"
               style={{ background: 'var(--accent)', color: '#09090b' }}
             >
-              {saving ? <div className="w-4 h-4 border-2 border-zinc-900 border-t-transparent rounded-full animate-spin" /> : <Save size={14} />}
+              {saving ? <div className="w-4 h-4 border-2 border-zinc-200 dark:border-zinc-900 border-t-transparent rounded-full animate-spin" /> : <Save size={14} />}
               Save Changes
             </button>
           </div>
@@ -738,7 +738,7 @@ export default function AdminEditor() {
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--accent)' }}>
             &lt;edit_{section} /&gt;
           </span>
-          <h2 className="text-3xl font-bold text-zinc-100">{config.label}</h2>
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">{config.label}</h2>
         </motion.div>
 
         {renderContent()}
@@ -761,8 +761,8 @@ export default function AdminEditor() {
             ) : (
               <AlertCircle size={16} className="text-red-400" />
             )}
-            <span className="text-sm font-medium text-zinc-200">{toast.message}</span>
-            <button onClick={() => setToast(null)} className="ml-2 text-zinc-500 hover:text-zinc-300">
+            <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{toast.message}</span>
+            <button onClick={() => setToast(null)} className="ml-2 text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300">
               <X size={14} />
             </button>
           </motion.div>
@@ -776,7 +776,7 @@ export default function AdminEditor() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-white/60 dark:bg-black/60 backdrop-blur-sm px-4"
             onClick={() => setShowResetConfirm(false)}
           >
             <motion.div
@@ -784,22 +784,22 @@ export default function AdminEditor() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="glass-strong rounded-2xl border border-zinc-800/60 p-6 max-w-sm w-full"
+              className="glass-strong rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 p-6 max-w-sm w-full"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
                   <AlertCircle size={20} className="text-amber-400" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-zinc-100">Reset Section?</h3>
-                  <p className="text-xs text-zinc-500">This will revert to default data</p>
+                  <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100">Reset Section?</h3>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">This will revert to default data</p>
                 </div>
               </div>
-              <p className="text-sm text-zinc-400 mb-6">
-                All changes to <strong className="text-zinc-200">{config.label}</strong> will be lost. This action cannot be undone.
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+                All changes to <strong className="text-zinc-800 dark:text-zinc-200">{config.label}</strong> will be lost. This action cannot be undone.
               </p>
               <div className="flex items-center gap-3 justify-end">
-                <button onClick={() => setShowResetConfirm(false)} className="px-4 py-2 rounded-lg text-sm font-medium bg-zinc-900/60 border border-zinc-800/50 text-zinc-400 hover:text-zinc-100 transition-all">
+                <button onClick={() => setShowResetConfirm(false)} className="px-4 py-2 rounded-lg text-sm font-medium bg-zinc-50/60 dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all">
                   Cancel
                 </button>
                 <button
