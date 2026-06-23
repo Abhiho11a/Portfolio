@@ -184,6 +184,25 @@ export function getDefaultData() {
       },
     ],
 
+    certifications: [
+      {
+        title: 'Full-Stack Web Development Intern',
+        issuer: 'Tech Startup Inc.',
+        date: 'Summer 2024',
+        description: 'Completed a 3-month unpaid internship building internal tools using the MERN stack. Designed and developed a dashboard to track employee metrics.',
+        link: 'https://github.com/user/internship-project',
+        color: '#10B981',
+      },
+      {
+        title: 'AWS Certified Cloud Practitioner',
+        issuer: 'Amazon Web Services',
+        date: 'January 2025',
+        description: 'Validated overall understanding of the AWS Cloud platform, covering basic cloud concepts and security.',
+        link: '',
+        color: '#F59E0B',
+      }
+    ],
+
     achievements: {
       hackathons: [
         {

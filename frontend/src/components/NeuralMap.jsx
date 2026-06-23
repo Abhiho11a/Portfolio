@@ -19,6 +19,7 @@ const getIcon = (key) => iconMap[key] || Hash;
 
 function SkillBar({ skill, color, delay }) {
   const Icon = getIcon(skill.name);
+  const hasLevel = skill.level && Number(skill.level) > 0;
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -31,20 +32,22 @@ function SkillBar({ skill, color, delay }) {
           <Icon size={16} style={{ color }} className="opacity-70 group-hover/skill:opacity-100 transition-opacity" />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between mb-1">
+          <div className={`flex items-center justify-between ${hasLevel ? 'mb-1' : ''}`}>
             <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">{skill.name}</span>
-            <span className="text-xs font-mono font-bold" style={{ color }}>{skill.level}%</span>
+            {hasLevel && <span className="text-xs font-mono font-bold" style={{ color }}>{skill.level}%</span>}
           </div>
-          <div className="w-full h-1.5 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 overflow-hidden">
-            <motion.div
-              className="h-full rounded-full"
-              style={{ background: `linear-gradient(90deg, ${color}, ${color}88)` }}
-              initial={{ width: 0 }}
-              animate={{ width: `${skill.level}%` }}
-              transition={{ duration: 1, delay: delay + 0.2, ease: 'easeOut' }}
-            />
-          </div>
-          <span className="text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-1 block">{skill.desc}</span>
+          {hasLevel && (
+            <div className="w-full h-1.5 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 overflow-hidden">
+              <motion.div
+                className="h-full rounded-full"
+                style={{ background: `linear-gradient(90deg, ${color}, ${color}88)` }}
+                initial={{ width: 0 }}
+                animate={{ width: `${skill.level}%` }}
+                transition={{ duration: 1, delay: delay + 0.2, ease: 'easeOut' }}
+              />
+            </div>
+          )}
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-400 mt-1 block">{skill.desc}</span>
         </div>
       </div>
     </motion.div>

@@ -66,6 +66,16 @@ const portfolioDataSchema = new mongoose.Schema({
     current: Boolean,
   }],
 
+  certifications: [{
+    title: String,
+    issuer: String,
+    date: String,
+    description: String,
+    link: String,
+    image: String,
+    color: String,
+  }],
+
   achievements: {
     hackathons: [{
       title: String,

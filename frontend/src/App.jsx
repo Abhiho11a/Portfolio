@@ -7,6 +7,7 @@ import NeuralMap from './components/NeuralMap';
 import ProjectLab from './components/ProjectLab';
 import CurrentlyBuilding from './components/CurrentlyBuilding';
 import Education from './components/Education';
+import Certifications from './components/Certifications';
 import Achievements from './components/Achievements';
 import TerminalUI from './components/Terminal';
 import ProofOfWork from './components/ProofOfWork';
@@ -44,6 +45,8 @@ function PortfolioLayout() {
         <CurrentlyBuilding />
         <SectionDivider />
         <Education />
+        <SectionDivider />
+        <Certifications />
         <SectionDivider />
         <Achievements />
         <SectionDivider />

@@ -7,7 +7,7 @@ const router = express.Router();
 
 const VALID_SECTIONS = [
   'hero', 'skills', 'projects', 'currentlyBuilding',
-  'education', 'achievements', 'proofOfWork', 'contact', 'footer'
+  'education', 'certifications', 'achievements', 'proofOfWork', 'contact', 'footer'
 ];
 
 // Helper: get or create the single portfolio document
