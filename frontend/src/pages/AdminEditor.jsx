@@ -113,6 +113,7 @@ const SECTION_CONFIGS = {
       { key: 'techStack', label: 'Tech Stack (comma separated)', type: 'tags' },
       { key: 'liveDemo', label: 'Live Demo URL', type: 'text' },
       { key: 'github', label: 'GitHub URL', type: 'text' },
+      { key: 'images', label: 'Event Photos', type: 'multipleImageUpload' },
       { key: 'color', label: 'Color (hex)', type: 'color' },
       { key: 'trophy', label: 'Trophy Emoji', type: 'text' },
     ],
@@ -123,6 +124,7 @@ const SECTION_CONFIGS = {
       { key: 'date', label: 'Date', type: 'text' },
       { key: 'experience', label: 'Experience', type: 'textarea' },
       { key: 'takeaways', label: 'Key Takeaways (one per line)', type: 'lines' },
+      { key: 'images', label: 'Event Photos', type: 'multipleImageUpload' },
       { key: 'mood', label: 'Mood Emoji', type: 'text' },
       { key: 'color', label: 'Color (hex)', type: 'color' },
     ],
@@ -341,6 +343,75 @@ function FieldRenderer({ field, value, onChange }) {
               }
             }}
             className="block w-full text-sm text-zinc-500 dark:text-zinc-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[rgba(var(--accent-rgb),0.1)] file:text-[var(--accent)] hover:file:bg-[rgba(var(--accent-rgb),0.2)] transition cursor-pointer"
+          />
+        </div>
+      );
+
+    case 'multipleImageUpload':
+      const imagesList = Array.isArray(value) ? value : [];
+      return (
+        <div className="space-y-4">
+          {imagesList.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              {imagesList.map((imgUrl, idx) => (
+                <div key={idx} className="relative aspect-square rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 group/thumb">
+                  <img src={imgUrl} alt={`Upload ${idx}`} className="w-full h-full object-cover" />
+                  <button 
+                    onClick={() => {
+                      const newList = [...imagesList];
+                      newList.splice(idx, 1);
+                      onChange(newList);
+                    }} 
+                    className="absolute top-1 right-1 p-1 bg-black/50 text-white rounded-full opacity-0 group-hover/thumb:opacity-100 hover:bg-red-500 transition-all"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+          <input 
+            type="file" 
+            accept="image/*"
+            multiple
+            onChange={async (e) => {
+              const files = Array.from(e.target.files || []);
+              if (files.length === 0) return;
+              
+              try {
+                const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+                const uploadedUrls = [];
+                
+                // Upload files sequentially to avoid overwhelming the server
+                for (const file of files) {
+                  const formData = new FormData();
+                  formData.append('image', file);
+                  
+                  const res = await fetch(`${API_URL}/upload`, {
+                    method: 'POST',
+                    body: formData,
+                  });
+                  
+                  const data = await res.json();
+                  if (data.success) {
+                    uploadedUrls.push(data.url);
+                  } else {
+                    console.error('Failed to upload a file:', data.message);
+                  }
+                }
+                
+                if (uploadedUrls.length > 0) {
+                  onChange([...imagesList, ...uploadedUrls]);
+                }
+              } catch (err) {
+                console.error('Upload error', err);
+                alert('Upload failed. Check console.');
+              }
+              
+              // Reset the input
+              e.target.value = '';
+            }}
+            className="block w-full text-sm text-zinc-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[rgba(var(--accent-rgb),0.1)] file:text-[var(--accent)] hover:file:bg-[rgba(var(--accent-rgb),0.2)] transition cursor-pointer"
           />
         </div>
       );

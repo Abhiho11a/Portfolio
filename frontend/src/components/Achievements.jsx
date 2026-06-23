@@ -17,10 +17,8 @@ function ImageGallery({ images, color }) {
     <div className="relative rounded-xl overflow-hidden border border-zinc-200/50 dark:border-zinc-800/50">
       <div className="relative aspect-video bg-zinc-50/80 dark:bg-zinc-900/80 flex items-center justify-center">
         <AnimatePresence mode="wait">
-          <motion.div key={current} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col items-center justify-center p-6">
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: `${color}15` }}><Image size={28} style={{ color }} /></div>
-            <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 text-center">{images[current].placeholder}</span>
-            <span className="text-xs font-medium mt-2 px-3 py-1 rounded-full" style={{ color, background: `${color}12` }}>{images[current].label}</span>
+          <motion.div key={current} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute inset-0">
+            <img src={images[current]} alt="Gallery photo" className="w-full h-full object-cover" />
           </motion.div>
         </AnimatePresence>
         {images.length > 1 && (<>
@@ -82,6 +80,8 @@ function HackathonCard({ item, index }) {
 }
 
 function EventCard({ item, index }) {
+  const [expanded, setExpanded] = useState(false);
+  const hasImages = item.images && item.images.length > 0;
   return (
     <TiltCard>
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} whileHover={{ x: 5, transition: { duration: 0.2 } }} className="glass rounded-xl p-5 md:p-6 border border-zinc-200/60 dark:border-zinc-800/60 hover:border-zinc-300/80 dark:hover:border-zinc-700/80 transition-all group">
@@ -112,6 +112,17 @@ function EventCard({ item, index }) {
           </div>
         </div>
       </div>
+
+      {hasImages && (
+        <div className="mt-5 border-t border-zinc-200/50 dark:border-zinc-800/50 pt-5">
+          <button onClick={() => setExpanded(!expanded)} className="flex items-center gap-2 text-sm font-medium mb-3 transition-colors" style={{ color: item.color }}>
+            <Image size={14} />{expanded ? 'Hide' : 'View'} Event Photos ({item.images.length})
+            <motion.span animate={{ rotate: expanded ? 180 : 0 }}><ChevronLeft size={14} className="-rotate-90" /></motion.span>
+          </button>
+          <AnimatePresence>{expanded && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden"><ImageGallery images={item.images} color={item.color} /></motion.div>)}</AnimatePresence>
+        </div>
+      )}
+
       </motion.div>
     </TiltCard>
   );
