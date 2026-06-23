@@ -19,7 +19,7 @@ function ImageGallery({ images, color }) {
         <AnimatePresence mode="wait">
           <motion.div key={current} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute inset-0 flex flex-col items-center justify-center p-6">
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-3" style={{ background: `${color}15` }}><Image size={28} style={{ color }} /></div>
-            <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 text-center">{images[current].placeholder}</span>
+            <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 text-center">{images[current].placeholder}</span>
             <span className="text-xs font-medium mt-2 px-3 py-1 rounded-full" style={{ color, background: `${color}12` }}>{images[current].label}</span>
           </motion.div>
         </AnimatePresence>
@@ -94,7 +94,7 @@ function EventCard({ item, index }) {
             <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">{item.title}</h3>
             <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded" style={{ color: item.color, background: `${item.color}12`, border: `1px solid ${item.color}20` }}>{item.type}</span>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-3">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mb-3">
             <span className="flex items-center gap-1"><MapPin size={11} /> {item.location}</span>
             <span className="flex items-center gap-1"><Calendar size={11} /> {item.date}</span>
             <span className="flex items-center gap-1"><CalendarCheck size={11} style={{ color: 'var(--accent)' }} /> {item.status}</span>
@@ -104,7 +104,7 @@ function EventCard({ item, index }) {
             <h4 className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-2 flex items-center gap-1.5"><MessageCircle size={12} style={{ color: item.color }} /> Key Takeaways</h4>
             <ul className="space-y-1">
               {item.takeaways?.map((t, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
+                <li key={i} className="flex items-start gap-2 text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">
                   <span className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: item.color }} />{t}
                 </li>
               ))}
@@ -142,7 +142,7 @@ export default function Achievements() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--tertiary)' }}>&lt;achievements /&gt;</span>
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Hackathons, Events & <span className="text-gradient-warm">Wins</span></h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">Building under pressure, learning from the community, always showing up.</p>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">Building under pressure, learning from the community, always showing up.</p>
         </motion.div>
 
         {/* Tabs */}
@@ -151,7 +151,7 @@ export default function Achievements() {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
             return (
-              <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`relative flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex-shrink-0 ${isActive ? 'text-zinc-900 dark:text-zinc-100' : 'text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:bg-zinc-50/40 dark:hover:bg-zinc-900/40'}`}>
+              <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`relative flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex-shrink-0 ${isActive ? 'text-zinc-900 dark:text-zinc-100' : 'text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:bg-zinc-50/40 dark:hover:bg-zinc-900/40'}`}>
                 {isActive && (<motion.div layoutId="achievementTabBg" className="absolute inset-0 glass rounded-xl border border-zinc-300/50 dark:border-zinc-700/50" style={{ boxShadow: `0 0 15px ${tab.color}10` }} transition={{ type: 'spring', stiffness: 400, damping: 30 }} />)}
                 <Icon size={16} className="relative z-10" style={{ color: isActive ? tab.color : undefined }} />
                 <span className="relative z-10">{tab.label}</span>

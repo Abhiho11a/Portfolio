@@ -83,7 +83,7 @@ export default function ProofOfWork() {
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">
             Live <span className="text-gradient-warm">Stats</span>
           </h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">
             Real-time metrics from GitHub and LeetCode — always shipping, always solving.
           </p>
         </motion.div>
@@ -103,7 +103,7 @@ export default function ProofOfWork() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">GitHub Activity</h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">github.com/{githubUsername}</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">github.com/{githubUsername}</p>
               </div>
             </div>
 
@@ -129,7 +129,7 @@ export default function ProofOfWork() {
                   <div key={stat.label} className="text-center p-3 rounded-xl bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200/40 dark:border-zinc-800/40">
                     <Icon size={16} className="mx-auto mb-1.5" style={{ color: stat.color }} />
                     <span className="block text-lg font-bold text-zinc-900 dark:text-zinc-100">{stat.value}</span>
-                    <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{stat.label}</span>
+                    <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{stat.label}</span>
                   </div>
                 );
               })}
@@ -151,12 +151,12 @@ export default function ProofOfWork() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">LeetCode Activity</h3>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">leetcode.com/u/{leetcodeUsername}</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">leetcode.com/u/{leetcodeUsername}</p>
                 </div>
               </div>
               <div className="text-right">
                 <span className="text-2xl font-extrabold text-gradient">{leetcodeTotal}</span>
-                <span className="block text-[10px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Total Solved</span>
+                <span className="block text-[10px] text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">Total Solved</span>
               </div>
             </div>
 
@@ -182,7 +182,7 @@ export default function ProofOfWork() {
                 <div key={difficulty}>
                   <div className="flex justify-between text-sm mb-1.5">
                     <span className="font-medium" style={{ color }}>{difficulty}</span>
-                    <span className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{solved} / {total}</span>
+                    <span className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500">{solved} / {total}</span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-zinc-100/80 dark:bg-zinc-800/80 overflow-hidden">
                     <motion.div

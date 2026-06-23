@@ -1,7 +1,17 @@
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Cat, ArrowRight, Layout, Code2, Server } from 'lucide-react';
 
 export default function ProjectModal({ project, onClose }) {
+  useEffect(() => {
+    if (project) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [project]);
+
   if (!project) return null;
 
   return (
@@ -53,9 +63,11 @@ export default function ProjectModal({ project, onClose }) {
                 <p className="text-xl font-medium" style={{ color: project.colorHex }}>
                   {project.tagline}
                 </p>
-                <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed max-w-2xl">
-                  {project.description}
-                </p>
+                <div className="max-h-[30vh] overflow-y-auto pr-4" style={{ scrollbarWidth: 'thin' }}>
+                  <p className="text-zinc-600 dark:text-zinc-400 text-base md:text-lg leading-relaxed max-w-2xl">
+                    {project.description}
+                  </p>
+                </div>
               </div>
 
               {/* Action Buttons */}
@@ -117,7 +129,7 @@ export default function ProjectModal({ project, onClose }) {
                   {Object.entries(project.stats).map(([key, value]) => (
                     <div key={key}>
                       <span className="block text-3xl font-black" style={{ color: project.colorHex }}>{value}</span>
-                      <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase tracking-wider font-semibold">{key}</span>
+                      <span className="text-sm text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 uppercase tracking-wider font-semibold">{key}</span>
                     </div>
                   ))}
                 </div>

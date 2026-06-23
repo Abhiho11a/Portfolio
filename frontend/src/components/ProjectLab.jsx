@@ -46,7 +46,7 @@ function ProjectCard({ project, index, onClick }) {
               </a>
             )}
           </div>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5">{project.description}</p>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5 line-clamp-3">{project.description}</p>
           <div className="flex flex-wrap gap-2 mb-5">
             {project.techStack?.map((tech) => (
               <span key={tech} className="px-2.5 py-1 text-xs font-medium rounded-md border" style={{ background: `${project.colorHex}10`, color: `${project.colorHex}cc`, borderColor: `${project.colorHex}25` }}>{tech}</span>
@@ -57,7 +57,7 @@ function ProjectCard({ project, index, onClick }) {
               {project.stats && Object.entries(project.stats).map(([key, value]) => (
                 <div key={key} className="text-center">
                   <span className="text-lg font-bold" style={{ color: project.colorHex }}>{value}</span>
-                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 capitalize">{key}</span>
+                  <span className="block text-xs text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 capitalize">{key}</span>
                 </div>
               ))}
             </div>
@@ -89,7 +89,7 @@ export default function ProjectLab() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="mb-12">
           <span className="text-xs font-mono tracking-widest uppercase mb-3 block" style={{ color: 'var(--secondary)' }}>&lt;the_lab /&gt;</span>
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100">Featured <span className="text-gradient">Projects</span></h2>
-          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">Production-grade applications built with modern architectures and cutting-edge tech.</p>
+          <p className="text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 dark:text-zinc-500 mt-2 max-w-lg">Production-grade applications built with modern architectures and cutting-edge tech.</p>
         </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {projects.map((project, i) => (
