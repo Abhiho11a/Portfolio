@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Layers, Code2, GraduationCap, Trophy, Terminal, BarChart2, MessageSquare, Rocket, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Home, Layers, Code2, GraduationCap, Award, Trophy, Terminal, BarChart2, MessageSquare, Rocket, Mail, ChevronRight, ChevronLeft } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Magnetic from './Magnetic';
 
@@ -10,6 +10,7 @@ const navItems = [
   { id: 'projects', icon: Code2, label: 'Projects', href: '#projects' },
   { id: 'now', icon: Rocket, label: 'Building', href: '#now' },
   { id: 'education', icon: GraduationCap, label: 'Education', href: '#education' },
+  { id: 'certifications', icon: Award, label: 'Certifications', href: '#certifications' },
   { id: 'achievements', icon: Trophy, label: 'Wins', href: '#achievements' },
   { id: 'terminal', icon: Terminal, label: 'Terminal', href: '#terminal' },
   { id: 'stats', icon: BarChart2, label: 'Stats', href: '#stats' },
@@ -19,6 +20,7 @@ const navItems = [
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('hero');
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [tooltipX, setTooltipX] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const isClickingRef = useRef(false);
@@ -49,6 +51,16 @@ export default function Navbar() {
     clickTimeoutRef.current = setTimeout(() => {
       isClickingRef.current = false;
     }, 1000);
+  };
+
+  const handleMouseEnter = (index, e) => {
+    setHoveredIndex(index);
+    if (e.currentTarget && navRef.current) {
+      const containerRect = navRef.current.parentElement.getBoundingClientRect();
+      const itemRect = e.currentTarget.getBoundingClientRect();
+      // Calculate exact center position of the icon relative to the parent container
+      setTooltipX(itemRect.left - containerRect.left + itemRect.width / 2);
+    }
   };
 
   useEffect(() => {
@@ -107,6 +119,32 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
+      {/* Global Tooltip (Outside of scrolling container to prevent clipping) */}
+      <AnimatePresence>
+        {hoveredIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 5, scale: 0.8 }}
+            transition={{ duration: 0.15 }}
+            className="absolute -top-12 px-3 py-1.5 glass bg-zinc-50 dark:bg-zinc-900 border border-zinc-300/50 dark:border-zinc-700/50 rounded-lg text-xs font-medium text-zinc-800 dark:text-zinc-200 whitespace-nowrap shadow-xl z-50 pointer-events-none"
+            style={{ 
+              left: `${tooltipX}px`,
+              transform: 'translateX(-50%)',
+              borderColor: hoveredIndex === 'ai' ? 'rgba(var(--accent-rgb), 0.4)' : undefined,
+              color: hoveredIndex === 'ai' ? 'var(--accent)' : undefined
+            }}
+          >
+            {hoveredIndex === 'ai' ? 'Ask My AI' : navItems[hoveredIndex]?.label}
+            {/* Arrow */}
+            <div 
+              className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-50 dark:bg-zinc-900 border-b border-r border-zinc-300/50 dark:border-zinc-700/50 rotate-45" 
+              style={{ borderColor: hoveredIndex === 'ai' ? 'rgba(var(--accent-rgb), 0.4)' : undefined }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.nav
         ref={navRef}
         onScroll={checkScroll}
@@ -125,7 +163,7 @@ export default function Navbar() {
             <a
               key={item.id}
               href={item.href}
-              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseEnter={(e) => handleMouseEnter(index, e)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => handleNavClick(item.id)}
               className="relative group p-2.5 md:p-3 rounded-full transition-all duration-300 outline-none block flex-shrink-0"
@@ -156,23 +194,6 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
 
-                {/* Tooltip */}
-                <AnimatePresence>
-                  {isHovered && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 5, scale: 0.8 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 glass bg-zinc-50 dark:bg-zinc-900 border border-zinc-300/50 dark:border-zinc-700/50 rounded-lg text-xs font-medium text-zinc-800 dark:text-zinc-200 whitespace-nowrap shadow-xl hidden md:block"
-                    >
-                      {item.label}
-                      {/* Arrow */}
-                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-50 dark:bg-zinc-900 border-b border-r border-zinc-300/50 dark:border-zinc-700/50 rotate-45" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
                 {/* Icon */}
                 <motion.div 
                   animate={{ 
@@ -200,24 +221,9 @@ export default function Navbar() {
           href="#terminal"
           className="relative group p-2.5 md:p-3 rounded-full transition-all block flex-shrink-0"
           style={{ background: 'rgba(var(--accent-rgb), 0.1)', color: 'var(--accent)', border: '1px solid rgba(var(--accent-rgb), 0.2)', boxShadow: '0 0 15px rgba(var(--accent-rgb), 0.15)' }}
-          onMouseEnter={() => setHoveredIndex('ai')}
+          onMouseEnter={(e) => handleMouseEnter('ai', e)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
-            <AnimatePresence>
-              {hoveredIndex === 'ai' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 5, scale: 0.8 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 glass bg-zinc-50 dark:bg-zinc-900 rounded-lg text-xs font-medium whitespace-nowrap shadow-xl hidden md:block"
-                  style={{ color: 'var(--accent)', borderColor: 'rgba(var(--accent-rgb), 0.4)' }}
-                >
-                  Ask My AI
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-50 dark:bg-zinc-900 border-b border-r rotate-45" style={{ borderColor: 'rgba(var(--accent-rgb), 0.4)' }} />
-                </motion.div>
-              )}
-            </AnimatePresence>
             <MessageSquare size={18} className="md:w-5 md:h-5" />
           </a>
 

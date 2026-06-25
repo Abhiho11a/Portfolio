@@ -75,7 +75,14 @@ function CertificationCard({ item, index }) {
 
 export default function Certifications() {
   const { data, loading } = usePortfolioData();
-  const certifications = data?.certifications || [];
+  const rawCertifications = data?.certifications || [];
+
+  // Sort by date descending (most recent first)
+  const certifications = [...rawCertifications].sort((a, b) => {
+    const dateA = new Date(a.date || 0);
+    const dateB = new Date(b.date || 0);
+    return dateB - dateA;
+  });
 
   if (loading || certifications.length === 0) return null;
 
